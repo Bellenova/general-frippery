@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Bug B Queue</title>
+<link href='http://fonts.googleapis.com/css?family=Muli|Cutive' rel='stylesheet' type='text/css'>
+<script src='http://ajax.microsoft.com/ajax/jquery/jquery-1.4.2.min.js' type='text/javascript'></script>
+<link rel="stylesheet" type="text/css" href="css/shadowbox.css">
+<style type="text/css" title="currentStyle">
+@import "css/demo_table.css";
+body {
+	font-family: 'Muli', sans-serif;
+	margin-bottom: 0;
+	margin-left: 0;
+	margin-right: 0;
+	margin-top: 0;
+	text-align: center;
+	background: url('images/background.gif') repeat-x #a1bedc;
+}
+a, a:link, a:active {
+	color: #0066CC;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+#masthead {
+	background-color: #000;
+	border-bottom-color: #333333;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	box-shadow: 0 2px 2px 0 #333333;
+	left: 0;
+	position: fixed;
+	text-align: left;
+	top: 0;
+	padding: 0 20px;
+	width: 100%;
+	z-index: 999;
+	font-family: 'Cutive', serif;
+}
+#masthead h1 {
+	color: #fff;
+	font-family: 'Cutive', serif;
+}
+#masthead #client {
+	position: absolute;
+	top: 0;
+	right: 50px;
+	color: #fff;
+	font-size: 20px;
+	font-family: 'Cutive', serif;
+}
+#client h2 {
+	font-size: 20px;
+}
+#masthead .legend {
+	margin-top: 20px;
+	font-family: 'Cutive', serif;
+}
+.legend span {
+	margin-right: 10px;
+	font-size: 11px;
+	font-weight: 700;
+	color: #fff;
+}
+.legend span.open {
+	color:#66CC33;
+}
+.legend span.modified {
+	color: #CC0000;
+}
+.legend span.closed {
+	color: #999999;
+}
+input, select {
+	border: 1px solid #ccc;
+	font-family: 'Muli', serif;
+	font-size: 12px;
+	padding: 3px;
+	line-height: 18px;
+}
+nav a, nav a:link {
+	-moz-text-blink: none;
+	-moz-text-decoration-color: -moz-use-text-color;
+	-moz-text-decoration-line: none;
+	-moz-text-decoration-style: solid;
+	color: #FFFFFF;
+	font-family: 'Cutive', serif;
+	line-height: 30px;
+	padding-bottom: 10px;
+	padding-left: 0;
+	padding-right: 30px;
+	padding-top: 0;
+	font-size: 14px;
+}
+nav .active, nav a:hover {
+	color: #a1bedc;
+}
+#container {
+	margin: 90px 10% 20px 10%;
+	text-align: left;
+	width: 80%;
+	background-color:#fcfcfc;
+	text-align:left;
+	color:#000;
+	font-size:	0.875em;
+	line-height: 20px;
+	-webkit-box-shadow:0 0 10px 10px #a1bedc;
+	-moz-box-shadow:0 0 10px 10px #a1bedc;
+	box-shadow:0 0 10px 10px #a1bedc;
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	border-radius:10px;
+	border:2px solid #fff;
+	z-index:999;
+}
+#bug-list {
+	padding: 30px;
+}
+#bugs {
+	width: 100%;
+	margin: 0 auto;
+}
+.instructions {
+	margin-bottom: 20px;
+}
+td:first-child {
+	text-align: center;
+}
+</style>
+
+<script type="text/javascript" src="js/shadowbox.js"></script>
+<script type="text/javascript" language="javascript" src="js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="js/dataTables.htmlColumnFilter.js"></script>
+<script type="text/javascript">
+			Shadowbox.init();
+				$(document).ready(function(){
+				flagSwap();
+			 $('#bugs').dataTable().columnFilter({
+					aoColumns: [ null,
+							 { type: "text" },
+							 { type: "select" },
+							 { type: "select" },
+					 		 { type: "text" }
+						]
+		
+				});
+		});
+			function flagSwap() {
+	jQuery.each(jQuery('.flagged'), function(index, value) {
+		jQuery(this).find("td:first").html('<img src="images/flag-on.png" alt="Modified"/>');
+});	
+jQuery.each(jQuery('.closed'), function(index, value) {
+		jQuery(this).find("td:first").html('&#xa0;');
+});	
+jQuery.each(jQuery('.open'), function(index, value) {
+		jQuery(this).find("td:first").html('<img src="images/flag-off.png" alt="Open"/>');
+});	
+}
+		</script>
+</head>
+<body>
+<section id="masthead">
+  <h1>BugBQueue</h1>
+  <div id="client">
+  <h2>Test Client :: Test Project  </h2><div class="legend"> <span class="open">Open: 8</span><span class="modified">Modified: 3</span><span class="closed">Closed: 10</span><span class="total">Total: 18</span> </div>
+  </div>
+  <nav> <a href="#">Projects</a> <a href="#">Add Bug</a> <a href="#">User Preferences</a> <a href="#">Log Out</a> </nav>
+</section>
+<div id="container">
+  <section id="bug-list">
+    <div class="instructions"> Click on a column header to sort, or choose an option at the bottom to filter results.</div>
+    <table class="display" id="bugs">
+      <thead>
+        <tr>
+          <th>Modified</th>
+          <th>Bug Number</th>
+          <th>Reported by</th>
+          <th>Assigned to</th>
+          <th>Comments</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <th>Sort By:</th>
+          <th>Bug Number</th>
+          <th>Reported By</th>
+          <th>Assigned to</th>
+          <th>Comments</th>
+        </tr>
+      </tfoot>
+      <tbody>
+        <tr class="odd flagged">
+          <td>Modified</td>
+          <td><a href="bug.html" rel="shadowbox">9980</a></td>
+          <td>Foo Far</td>
+          <td>Bob Bajoras</td>
+          <td>Sed vel massa in est ullamcorper faucibus.</td>
+        </tr>
+        <tr class="even closed">
+          <td>Closed</td>
+          <td><a rel="shadowbox" href="#">9992</a></td>
+          <td>Greg James</td>
+          <td>Bob Bajoras</td>
+          <td>Proin sagittis cursus nulla vel vestibulum.</td>
+        </tr>
+        <tr class="odd closed">
+          <td>Closed</td>
+          <td><a href="bug.html" rel="shadowbox">9993</a></td>
+          <td>Anna Keaney-Dullea</td>
+          <td>John Boynton</td>
+          <td>Nam nunc dolor, aliquam non consequat eget, tempor vitae massa. </td>
+        </tr>
+        <tr class="even open">
+          <td>Open</td>
+          <td><a href="bug.html" rel="shadowbox">9994</a></td>
+          <td>Greg James</td>
+          <td>John Boynton</td>
+          <td>orbi sed turpis eu sem ultrices posuere faucibus non ipsum. </td>
+        </tr>
+        <tr class="odd open">
+          <td>Open</td>
+          <td><a href="bug.html" rel="shadowbox">9995</a></td>
+          <td>Foo Far</td>
+          <td>Bob Bajoras</td>
+          <td>Nam pretium, purus in feugiat pharetra, est leo rhoncus nisl, eget euismod neque tellus ac nibh. </td>
+        </tr>
+        <tr class="even closed">
+          <td>Closed</td>
+          <td><a href="bug.html" rel="shadowbox">9996</a></td>
+          <td>Foo Far</td>
+          <td>Bob Bajoras</td>
+          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+        </tr>
+        <tr class="odd flagged">
+          <td>Yes</td>
+          <td><a href="bug.html" rel="shadowbox">9997</a></td>
+          <td>Foo Far</td>
+          <td>Bob Bajoras</td>
+          <td>Sed vel massa in est ullamcorper faucibus.</td>
+        </tr>
+        <tr class="even closed">
+          <td>closed</td>
+          <td><a rel="shadowbox" href="#">9998</a></td>
+          <td>Greg James</td>
+          <td>Bob Bajoras</td>
+          <td>Proin sagittis cursus nulla vel vestibulum.</td>
+        </tr>
+        <tr class="odd closed">
+          <td>Closed</td>
+          <td><a href="bug.html" rel="shadowbox">9999</a></td>
+          <td>Anna Keaney-Dullea</td>
+          <td>John Boynton</td>
+          <td>Nam nunc dolor, aliquam non consequat eget, tempor vitae massa. </td>
+        </tr>
+        <tr class="even closed">
+          <td>Closed</td>
+          <td><a href="bug.html" rel="shadowbox">9990</a></td>
+          <td>Greg James</td>
+          <td>John Boynton</td>
+          <td>orbi sed turpis eu sem ultrices posuere faucibus non ipsum. </td>
+        </tr>
+        <tr class="odd closed">
+          <td>Closed</td>
+          <td><a href="bug.html" rel="shadowbox">9981</a></td>
+          <td>Foo Far</td>
+          <td>Bob Bajoras</td>
+          <td>Nam pretium, purus in feugiat pharetra, est leo rhoncus nisl, eget euismod neque tellus ac nibh. </td>
+        </tr>
+        <tr class="even closed">
+          <td>Closed</td>
+          <td><a href="bug.html" rel="shadowbox">9982</a></td>
+          <td>Foo Far</td>
+          <td>Bob Bajoras</td>
+          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+        </tr>
+        <tr class="odd flagged">
+          <td>Yes</td>
+          <td><a href="bug.html" rel="shadowbox">9983</a></td>
+          <td>Foo Far</td>
+          <td>Bob Bajoras</td>
+          <td>Sed vel massa in est ullamcorper faucibus.</td>
+        </tr>
+        <tr class="even closed">
+          <td>closed</td>
+          <td><a rel="shadowbox" href="#">9984</a></td>
+          <td>Greg James</td>
+          <td>Bob Bajoras</td>
+          <td>Proin sagittis cursus nulla vel vestibulum.</td>
+        </tr>
+        <tr class="odd open">
+          <td>Open</td>
+          <td><a href="bug.html" rel="shadowbox">9985</a></td>
+          <td>Anna Keaney-Dullea</td>
+          <td>John Boynton</td>
+          <td>Nam nunc dolor, aliquam non consequat eget, tempor vitae massa. </td>
+        </tr>
+        <tr class="even closed">
+          <td>Closed</td>
+          <td><a href="bug.html" rel="shadowbox">9986</a></td>
+          <td>Greg James</td>
+          <td>John Boynton</td>
+          <td>orbi sed turpis eu sem ultrices posuere faucibus non ipsum. </td>
+        </tr>
+        <tr class="odd closed">
+          <td>Closed</td>
+          <td><a href="bug.html" rel="shadowbox">9987</a></td>
+          <td>Foo Far</td>
+          <td>Bob Bajoras</td>
+          <td>Nam pretium, purus in feugiat pharetra, est leo rhoncus nisl, eget euismod neque tellus ac nibh. </td>
+        </tr>
+        <tr class="even closed">
+          <td>Closed</td>
+          <td><a href="bug.html" rel="shadowbox">9988</a></td>
+          <td>Foo Far</td>
+          <td>Bob Bajoras</td>
+          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5987322-3']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>

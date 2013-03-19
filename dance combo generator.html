@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<title>Untitled Document</title>
+<!-- ## TODO ## 
+
+Add downbeat option to each combo
+Add  alternating flag? randomly assign a class?
+Add Clockwise/Counter demarcation
+
+-->
+<style>
+html, * {
+	font-family: 'Muli', sans-serif;
+}
+body {
+	font-family: Arial;
+	font-size: 10px;
+}
+h2 {
+	font-size: 14px;
+}
+h3 {
+	font-size: 12px;
+	color: #666666;
+}
+fieldset {
+	font-size: 12px;
+	background-color: #fcfcfc;
+	border: 3px solid #fff;
+	width: 800px;
+}
+input.element, select.element {
+	border: 1px solid #666666;
+	font-size: 12px;
+}
+select {
+	width: 300px;
+}
+.form {
+	margin-top: 30px;
+}
+
+#Combo {
+	margin-bottom: 20px;
+	display: none;
+}
+#Rhythm {
+	display: none;
+}
+.instructions, .shuffle {
+	padding: 5px 0;
+	display: block;
+	font-size: 13px;
+}
+.column {
+	width: 250px;
+	float: left;
+	padding: 10px;
+	margin: 10px;
+	display: none;
+}
+.submit {
+	clear: both;
+}
+</style>
+<script>
+	function Generator (form) {
+		var output = "";
+		
+		for (var i=0; i < form.movement.length; i++)
+		   {
+		   if (form.movement[i].checked)
+			  {
+			  output = output + form.movement[i].value;
+			  addOption(document.form1.mylist, form.movement[i].value);
+			  }
+		   }sortlist('mylist');
+		   document.getElementById('Combo').style.display = 'block';
+		SetAllCheckBoxes(form.id, 'movement', false);
+		return false;
+
+	}
+	
+function SetAllCheckBoxes(FormName, FieldName, CheckValue)
+{
+	if(!document.forms[FormName])
+		return;
+	var objCheckBoxes = document.forms[FormName].elements[FieldName];
+	if(!objCheckBoxes)
+		return;
+	var countCheckBoxes = objCheckBoxes.length;
+	if(!countCheckBoxes)
+		objCheckBoxes.checked = CheckValue;
+	else
+		// set the check value for all check boxes
+		for(var i = 0; i < countCheckBoxes; i++)
+			objCheckBoxes[i].checked = CheckValue;
+}
+
+	function sortlist(layer) {
+		var lb = document.getElementById(layer);
+		arrTexts = new Array();
+
+		for(i=0; i<lb.length; i++)  {
+		  arrTexts[i] = lb.options[i].text;
+		}
+
+		arrTexts.sort(randOrd);
+		
+		for(i=0; i<lb.length; i++)  {
+		  lb.options[i].text = arrTexts[i];
+		  lb.options[i].value = arrTexts[i];
+		}
+	}
+
+	function randOrd(){
+		return (Math.round(Math.random())-0.5); } 
+		
+	function addOption(selectbox,text,value ) {
+		var optn = document.createElement("OPTION");
+		optn.text = text;
+		optn.value = value;
+		selectbox.options.add(optn);
+	}
+	
+	function GenerateRandom (form, qty) {
+		quoteList = new Array();
+	quoteList[0] = " with level change";
+	quoteList[1] = " ";
+	quoteList[2] = " ";
+	quoteList[3] = " ";
+	quoteList[4] = " with turn";
+	quoteList[5] = " ";
+	quoteList[6] = " ";
+	quoteList[7] = " ";
+	quoteList[8] = " ";
+	quoteList[9] = " ";
+	quoteList[10] = " ";
+	quoteList[11] = " ";
+	quoteList[12] = " with tilt";
+	
+
+
+		removeAllOptions(form.mylist);
+		var output = "";
+		for (var i=0; i < form.movement.length; i++)
+		   {
+		   		var now = new Date();
+	var secs = now.getSeconds();
+	var raw_random_number = Math.random(secs);
+	var random_number = Math.round(raw_random_number * (quoteList.length));
+
+	if (random_number == quoteList.length){random_number = 0}
+	
+	
+	//set quote
+	var quote = quoteList[random_number];
+			  output = output + form.movement[i].value;
+			  optionValue = form.movement[i].value + "  " + quote;
+			  addOption(document.form1.mylist, optionValue);
+		   }sortlist('mylist');
+		   for(j=form.mylist.options.length-1;j>=0;j--) {
+				if(j > qty) {
+					form.mylist.remove(j);
+				}
+			}
+		   document.getElementById('Combo').style.display = 'block';
+		   
+
+		return false;
+
+	}
+	
+	function removeAllOptions(selectbox)
+{
+var i;
+for(i=selectbox.options.length-1;i>=0;i--)
+{
+selectbox.remove(i);
+}
+}
+
+function Layers (form) {
+	removeAllOptions(form.mylist);
+
+		var layer1 = document.getElementsByClassName('layer1');
+		var output = "";
+		var qty = '1';
+		for (var i=0; i < layer1.length; i++)
+		   {
+			  addOption(document.form1.mylist, layer1[i].value);
+
+		   }sortlist('mylist');
+		   for(j=form.mylist.options.length-1;j>=0;j--) {
+				if(j > qty) {
+					form.mylist.remove(j);
+				}
+			}
+			
+			
+		   document.getElementById('Combo').style.display = 'block';
+		   
+
+		return false;
+
+}
+function get_random()
+{
+var ranNum= Math.floor(Math.random()*5);
+return ranNum;
+}
+
+function Rhythms(form)
+{
+//var qty = '5';
+removeAllOptions(form.mylist2);
+
+var qty=new Array();
+qty[0]= "1";
+qty[1]= "2";
+qty[2]= "3";
+qty[3]= "4 ";
+qty[4]= "5";
+qty[5]= "6";
+qty[6]= "7";
+
+//must equal 16
+var starter=new Array()
+starter[0]= "1";
+starter[1]= "2";
+starter[2]= "3";
+starter[3]= "4";
+starter[4]= "5";
+starter[5]= "6";
+starter[6]= "7";
+
+
+var i = Math.floor(7*Math.random());
+var j = Math.floor(7*Math.random());
+var k = Math.floor(7*Math.random());
+var l = Math.floor(7*Math.random());
+var m = Math.floor(7*Math.random());
+var n = Math.floor(7*Math.random());
+var o = Math.floor(7*Math.random());
+number = qty[i];
+
+addOption(document.form1.mylist2, starter[i]);
+addOption(document.form1.mylist2, starter[j]);
+addOption(document.form1.mylist2, starter[k]);
+addOption(document.form1.mylist2, starter[l]);
+addOption(document.form1.mylist2, starter[m]);
+addOption(document.form1.mylist2, starter[n]);
+addOption(document.form1.mylist2, starter[o]);
+document.getElementById('Rhythm').style.display = 'block';
+sortlist('mylist2');
+for(p=form.mylist2.options.length-1;p>=0;p--) {
+				if(p > number) {
+					form.mylist2.remove(p);
+				}
+			}
+			
+}
+
+</script>
+</head>
+<body>
+<form id="form1" name="form1" method="post" action="#" onSubmit="return Generator(this);">
+  <div class="instructions">Select the number of movements below to generate a random combination, or click on 'Generate a layering drill' to generate two to three appropriate movements for layering. Click on the "Generate a rhythm" button to generate a zill accompaniment.</div>
+  <select name=rand id="rand" onChange="return GenerateRandom (this.form, this.value);" class="element">
+    <option></option>
+    <option value="1">2</option>
+    <option value="2">3</option>
+    <option value="3">4</option>
+    <option value="4">5</option>
+    <option value="5">6</option>
+    <option value="6">7</option>
+    <option value="7">8</option>
+    <option value="8">9</option>
+    <option value="9">10</option>
+    <option value="10">11</option>
+    <option value="11">12</option>
+    <option value="12">13</option>
+    <option value="13">14</option>
+    <option value="14">15</option>
+  </select>
+  <p>
+    <input name="layerDrill" type="button" value="Generate a combination" onClick=" return GenerateRandom (this.form, this.form.rand.value);" class="element">
+    <input name="layerDrill" type="button" value="Generate a layering drill" onClick=" return Layers(this.form);" class="element">
+    <input name="layerDrill" type="button" value="Generate a rhythm" onClick=" return Rhythms(this.form);" class="element">
+  </p>
+  <div id="Combo">
+    <h3>Your Combo:</h3>
+    <div id="content">
+      <select name="mylist" id="mylist" size="15" class="element">
+      </select>
+      <br>
+    </div>
+    <div class="shuffle"> <a href="javascript:sortlist('mylist')">Re-shuffle</a> <a href="generator.html">Start Over</a></div>
+  </div>
+  <div id="Rhythm">
+    <h3>Your Rhythm:</h3>
+    <select name="mylist2" id="mylist2" size="7">
+    </select>
+    <div class="shuffle"><a href="javascript:sortlist('mylist2')">Re-shuffle</a> <a href="combos.html">Start Over</a></div>
+  </div>
+
+  <div class="form">
+    <input type="hidden" name="rhythm" value="1">
+    <input type="hidden" name="rhythm" value="3">
+    <input type="hidden" name="rhythm" value="5">
+    <input type="hidden" name="rhythm" value="7">
+   <!-- <div class="submit">
+      <input type="submit" name="button" id="button" value="Submit Checkboxes"  class="element">
+    </div>
+    -->
+    <div class="column">
+      <h2>Turns</h2>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" id="ChaineR" value="Chaine Turn " class="layer1">
+        Chaine Turn </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" id="StepFull" value="Step Turn" class="layer1">
+        Step Turn </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" id="PaddleL" value="Paddle Turn " class="layer1">
+        Paddle Turn </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Pivot Turn" class="layer1">
+        Pivot Turn </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Double Pivot Turn " class="layer1">
+        Double Pivot Turn </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" id="BarrelR" value="Barrel Turn" class="layer1">
+        Barrel Turn </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" id="BarrelL" value="3 Step Turn" class="layer1">
+        3 Step Turn </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Calibrated Spin" class="layer1">
+        Calibrated Spin </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Push turn" class="layer1">
+        Push turn </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement5" value="Turkish hip circles, stepping left" class="layer1">
+        Turkish  circles, stepping left </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement5" value="Turkish hip circles, stepping right" class="layer1">
+        Turkish  circles, stepping right </label>
+      </div>
+      <h2>Shoulders</h2>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" id="rollforwardleft" value="Shoulder Roll Forward" class="layer1">
+        Roll Forward </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Shoulder Roll Back" class="layer1">
+        Roll Back </label>
+      </div>
+      <div>
+        <label></label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" id="shoulderpopforwardL" value="Shoulder Pop Forward" class="layer1">
+        Shoulder Pop Forward</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" id="shoulderpopbackL" value="Shoulder Pop Back" class="layer1">
+        Shoulder Pop Back</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Dual Shoulder Roll and Pop" class="layer1">
+        Shoulder Roll and Pop</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Shoulder Triplets Down, on diagonal" class="layer1">
+        Shoulder Triplets down (on diagonal) </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Shoulder Bounce" class="layer1">
+        Shoulder Bounce</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Shoulder Lift" class="layer1">
+        Shoulder Lift</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Shoulder Drop" class="layer1">
+        Shoulder Drop</label>
+      </div>
+      <h2>Arms and Hands</h2>
+      <div>
+        <label>
+        <input type="checkbox" name="movement4" value="Artemis Arms" class="layer1">
+        Artemis Arms </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement4" value="Paddle Hands Up" class="layer1">
+        Paddle Hands Up</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement4" value="Pharonic Hands" class="layer1">
+        Pharonic Hands </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement4" value="Hawaiian Arms" class="layer1">
+        Hawaiian Arms </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement4" value="Party Arms" class="layer1">
+        Party Arms </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="snake" id="snake" value="Snake Arms" class="layer1">
+        Snake Arms</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement4"  value="Reverse Snake Arms" class="layer1">
+        Reverse Snake Arms</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement4" value="Sweep Arms to Left" class="layer1">
+        Sweep Arms to Left </label>
+      </div>
+      <div>
+        <input type="checkbox" name="movement4" value="Sweep Arms to Right" class="layer1">
+        Sweep Arms to Right </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement4" value="Taffy Arms" class="layer1">
+        Taffy Arms </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement4" value="Circle over head and out" class="layer1">
+        Circle over head and out </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement4" value="Propeller Arms" class="layer1">
+        Propeller Arms </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement4" value="First Position" class="layer1">
+        First position</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement4" value="Fifth Position" class="layer1">
+        Fifth position</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement4" value="Second position" class="layer1">
+        Second position</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement4" value="One arm in fifth, one in first" class="layer1">
+        One arm in fifth, one in first </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement4" value="One arm in fifth, one in second" class="layer1">
+        One arm in fifth, one in second </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement4" value="Sweep Arms to Left" class="layer1">
+        Sweep Arms to Left </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement4" value="Sweep Arms to Right" class="layer1">
+        Sweep Arms to Right </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement4" value="Hands Behind Head" class="layer1">
+        Hands behind head</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement4" value="Victory Position, palms out" class="layer1">
+        Victory position, palms out</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement4" value="Victory Position, palms in" class="layer1">
+        Victory position, palms in</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement4" value="Inverse Victory, palms out" class="layer1">
+        Inverse Victory, palms out </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement4" value="Inverse Victory, palms in" class="layer1">
+        Inverse Victory, palms in </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement4" value="Palms forward and together" class="layer1">
+        Palms forward and together </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement4" value="Tunnel Arms, palms up" class="layer1">
+        Tunnel Arms, palms up </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement4" value="Tunnel Arms, palms down" class="layer1">
+        Tunnel Arms, palms down </label>
+      </div>
+      <h2></h2>
+      <p>&nbsp;</p>
+    </div>
+    <div class="column">
+      <h2>Torso</h2>
+      <div>
+        <label>
+        <input type="checkbox" name="movement2"  value="Up to down, sharp " class="layer1">
+        Upper to Down, Sharp</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="upperUpSmooth" id="upperUpSmooth" value="Down to up, sharp " class="layer1">
+        Down to up, sharp </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="lowerDownSmooth" id="lowerDownSmooth" value="Up to down, soft" class="layer1">
+        Up to down, soft </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="lowerUpSmooth" id="lowerUpSmooth" value="Down to up, soft " class="layer1">
+        Down to up, soft </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement2"  value="Wave Down" class="layer1">
+        Wave Down </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement2"  value="Wave Up " class="layer1">
+        Wave Up </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement2"  value="Side und right " class="layer1">
+        Side und right </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement2"  value="Side und left " class="layer1">
+        Side und left </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="bellydown"  value="Belly Roll Up" class="layer1">
+        Belly Roll Up </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="bellydown"  value="Belly Roll Down" class="layer1">
+        Belly Roll Down </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="torsoRotation" id="torsoRotation" value="Torso Rotation" class="layer1">
+        Rotation </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="layback" id="layback" value="Layback" class="layer1">
+        Layback </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="torsoDip" id="torsoDip" value="Torso Dip Forward" class="layer1">
+        Torso Dip Forward </label>
+      </div>
+      <h2>Chest</h2>
+      <h3>Circles, squares</h3>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" id="Chest_Circle" value="Circle, horizontal" class="layer1">
+        Circle, horizontal</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Circle, vertical" class="layer1">
+        Circle, vertical</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Chest Half Circle Horizontal Front" class="layer1">
+        Half Circle Horizontal Front </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Chest Half Circle Horizontal Back" class="layer1">
+        Half Circle Horizontal Back </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" id="chestArcRight" value="Chest Half Circle Horizontal Right" class="layer1">
+        Half Circle Horizontal Right </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Chest Half Circle Horizontal Left" class="layer1">
+        Half Circle Horizontal Left </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Chest Half Circle Vertical Top" class="layer1">
+        Half Circle Vertical Top </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Chest Half Circle Vertical Bottom" class="layer1">
+        Half Circle Vertical Bottom </label>
+      </div>
+      <h3> Slides</h3>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Chest Slides Left" class="layer1">
+        Slides left </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Chest Slides Right" class="layer1">
+        Slides Right </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Chest Slides Front" class="layer1">
+        Slides Front </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Chest Slides Back" class="layer1">
+        Slides Back </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Chest Slides Right Front Diagonal" class="layer1">
+        Slides Right Front Diagonal </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Chest slides left front diagonal" class="layer1">
+        Slides left front diagonal </label>
+      </div>
+      <h3>Hori zonal 8s</h3>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Horizontal Chest Figure 8 Back to Front" class="layer1">
+        Horizontal  8 Back to Front</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Horizontal Chest Figure 8 Front to Back" class="layer1">
+        Horizontal  8 Front to Back</label>
+      </div>
+      <h3>Vertical 8s</h3>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Vertical Chest Figure 8 Up to Down" class="layer1">
+        Vertical  8 Up to Down</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Vertical Chest Figure 8 Down to Up" class="layer1">
+        Vertical  8 Down to Up</label>
+      </div>
+      <h3> Arcs</h3>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Vertical Chest Arc Left Out" class="layer1">
+        Vertical
+        Chest Arc Left Out</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Vertical Chest Arc Left In" class="layer1">
+        Vertical
+        Chest Arc Left In</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Vertical Chest Arc Right Out" class="layer1">
+        Vertical
+        Chest Arc Right Out</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Vertical Chest Arc Right In" class="layer1">
+        Vertical
+        Chest Arc Right In</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Z-axis arc out" class="layer1">
+        Z-axis arc out</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Z-axis arc in" class="layer1">
+        Z-axis arc in </label>
+      </div>
+      <h3>Shapes</h3>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Chest square" class="layer1">
+        Square </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Chest V" class="layer1">
+        V</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Chest pyramid" class="layer1">
+        Pyramid</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Chest diamond" class="layer1">
+        Diamond </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Chest hexagon" class="layer1">
+        Hexagon </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Chest octagon" class="layer1">
+        Octagon </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Chest Lift" class="layer1">
+        Lift</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Chest Drop" class="layer1">
+        Drop</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Chest  Q " class="layer1">
+        Q</label>
+      </div>
+    </div>
+    <div class="column">
+      <h2>Hip </h2>
+      <h3>Circles, interior </h3>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Interior hip circle" class="layer1">
+        Interior hip circle </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Interior half hip circle front" class="layer1">
+        Interior half  circle front </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Interior half hip circle back" class="layer1">
+        Interior half  circle back </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="interior half hip circle right" class="layer1">
+        Interior half  circle right </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="interior half hip circle left" class="layer1">
+        interior half  circle left </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="single Interior hip circle left" class="layer1">
+        single Interior  circle left </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="single interior hip circle right" class="layer1">
+        single interior  circle right </label>
+      </div>
+      <h3> Circles, exterior</h3>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Exterior hip circle" class="layer1">
+        Exterior  circle </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Exterior hip circle,  top half" class="layer1">
+        Exterior half circle top </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Exterior hip circle, bottom half" class="layer1">
+        Exterior half circle bottom </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Exterior hip circle, right half" class="layer1">
+        Exterior half circle, right </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Exterior hip circle, left half" class="layer1">
+        Exterior half circle, left </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Egyptian hip circles, stepping right" class="layer1">
+        Egyptian  circles, stepping right </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Egyptian hip circles, stepping left" class="layer1">
+        Egyptian  circles, stepping left </label>
+      </div>
+      <h3>Slides</h3>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Hip Slides Left" class="layer1">
+        Slides left </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Hip Slides Right" class="layer1">
+        Slides Right </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Hip Slides Front" class="layer1">
+        Slides Front </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Hip Slides Back" class="layer1">
+        Slides Back </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Hip Slides Right Front Diagonal" class="layer1">
+        Hip Slides Right Front Diagonal </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Hip slides left front diagonal" class="layer1">
+        Hip slides Left Front diagonal </label>
+      </div>
+      <h3>Hori zonal  8s</h3>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Horizontal Hip Figure 8 Back to Front" class="layer1">
+        Horizontal  8 Back to Front</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Horizontal Hip Figure 8 Front to Back" class="layer1">
+        Horizontal  8 Front to Back</label>
+      </div>
+      <h3>Vertical 8s</h3>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Vertical Hip Figure 8 Up to Down" class="layer1">
+        Vertical 8 up to down</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Vertical Hip Figure 8 Down to Up" class="layer1">
+        Vertical 8 down to up</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Vertical left half Hip figure 8 down to up" class="layer1">
+        Single hip 8</label>
+        up to down</div>
+      <div>
+        <label>
+        <input type="checkbox" name="Hip8left" id="Hip8left2" value="Vertical Hip Figure 8 Down to Up" class="layer1">
+        Single hip 8 down to up</label>
+      </div>
+      <h3> Arcs</h3>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Vertical Arc Left" class="layer1">
+        Vertical
+        Arc Left </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Vertical Arc Right" class="layer1">
+        Vertical Arc Right</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Horizontal Hip Arc Left" class="layer1">
+        Horizontal Hip Arc Left </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Horizontal Hip Arc Right" class="layer1">
+        Horizontal Hip Arc Right </label>
+      </div>
+      <h3> Shapes</h3>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Hip square" class="layer1">
+        Square </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Hip V" class="layer1">
+        V</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Hip pyramid" class="layer1">
+        Pyramid</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Hip diamond" class="layer1">
+        Diamond </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Hip hexagon" class="layer1">
+        Hexagon </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Hip octagon" class="layer1">
+        Octagon </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Singles" class="layer1">
+        Singles</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Hip Down" class="layer1">
+        Down</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="Hip Q " class="layer1">
+        Q</label>
+      </div>
+      <h3>Cylinders</h3>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Cylinder forward" class="layer1">
+        Cylinder forward</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Cylinder backward" class="layer1">
+        Cylinder backward</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value=" Single right cylinder forward" class="layer1">
+        Single right cylinder forward</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Single right cylinder backward" class="layer1">
+        Single right cylinder backward</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Single left cylinder forward" class="layer1">
+        Single left cylinder forward</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Single left cylinder backward" class="layer1">
+        Single left cylinder backward</label>
+      </div>
+      <h3>Twists</h3>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Basic twist left" class="layer1">
+        Basic twist left </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Basic twist right" class="layer1">
+        Basic twist right </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="3/4 twist chasse" class="layer1">
+        3/4 twist chasse </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Twist Hip" class="layer1">
+        Twist Hip </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Swing Twist Hip" class="layer1">
+        Swing Twist Hip </label>
+      </div>
+      <h3>Pulls/ Pushes</h3>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Left Hip Pulls" class="layer1">
+        Left Hip Pulls </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Right Hip Pulls" class="layer1">
+        Right Hip Pulls </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Right Hip Pushes" class="layer1">
+        Right Hip Pushes </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Left Hip Pushes" class="layer1">
+        Left Hip Pushes </label>
+      </div>
+    </div>
+    <div class="column">
+      <h2>Steps</h2>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" id="lungeLeft" value="LungeLeft" class="layer1">
+        Lunge Left </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" id="lungeRight" value="Lunge Right" class="layer1">
+        Lunge Right </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" id="rockForward" value="Rock Step Forward" class="layer1">
+        Rock Step Forward </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Rock Step Back" class="layer1">
+        Rock Step Back </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Heel Bounce" class="layer1">
+        Heel Bounce</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Step Ball Change" class="layer1">
+        Step Ball Change</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Katak" class="layer1">
+        Katak </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Twist Chasse" class="layer1">
+        Twist Chasse</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Tunisian Twist" class="layer1">
+        Tunisian Twist </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Triple Step" class="layer1">
+        Triple Step </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Step Cross Step" class="layer1">
+        Step Cross Step </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Ballet Step" class="layer1">
+        Ballet Step </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Flat Toe Flat" class="layer1">
+        Flat Toe Flat </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Grapevine" class="layer1">
+        Grapevine </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Pas de Bouree" class="layer1">
+        Pas de Bouree </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Walk to the beat" class="layer1">
+        Walk</label>
+      </div>
+      <h2>Shimmies</h2>
+      <div>
+        <label>
+        <input type="checkbox" name="movement"  value="3/4 Shimmy"  class="layer1">
+        3/4 </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="hagala" class="layer1">
+        Hagala</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Choo Choo" class="layer1">
+        Choo Choo </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Basic Shoulder Shimmy" class="layer1">
+        Basic Shoulder </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="3/4 Shoulder Shimmy" class="layer1">
+        3/4 Shoulder </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Swing Shimmy" class="layer1">
+        Swing </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Twist Shimmy" class="layer1">
+        Twist </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="3/4 Twist Shimmy" class="layer1">
+        3/4  Twist </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Left Leg Shimmy" class="layer1">
+        Left Leg </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Right Leg Shimmy" class="layer1">
+        Right Leg </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Vibration" class="layer1">
+        Vibration </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Bedoin Shimmy" class="layer1">
+        Bedoin </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Power Shimmy" class="layer1">
+        Power </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Walking Shimmy" class="layer1">
+        Walking </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Pelvic Shimmy" class="layer1">
+        Pelvic </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Pelvic 3/4 Shimmy" class="layer1">
+        Pelvic 3/4 </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Champagne Shimmy" class="layer1">
+        Champagne </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Champagne Shimmy" class="layer1">
+        Umi </label>
+      </div>
+      <h3>Pelvis</h3>
+      <div>
+        <label>
+        <input type="checkbox" name="movement3" value="Pelvic Tilt" class="layer1">
+        Tilt</label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement3" value="Pelvic Rock" class="layer1">
+        Rock </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement3" value="Pelvic Swing" class="layer1">
+        Swing </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="hippopback" id="hippopback" value="3/4 Pelvic Tilt" class="layer1">
+        3/4  Tilt</label>
+      </div>
+      <h2>Misc</h2>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Flutters" class="layer1">
+        Flutters </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Gypsy Kick" class="layer1">
+        Gypsy Kick </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Soaz Kick" class="layer1">
+        Psoas Kick </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Arabesque" class="layer1">
+        Arabesque </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Attitude Jump" class="layer1">
+        Attitude Jump </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Full Kick" class="layer1">
+        Full kick </label>
+      </div>
+      <div>
+        <label>
+        <input type="checkbox" name="movement" value="Behind the leg kick" class="layer1">
+        Behind the leg kick </label>
+      </div>
+    </div>
+  </div>
+</form>
+</body>
+</html>

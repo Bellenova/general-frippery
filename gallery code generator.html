@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Image Gallery Generator</title>
+<link href='http://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'>
+<style>
+html, * {
+font-family: 'Muli', sans-serif;
+}
+fieldset {
+font-size: 12px;
+background-color: #fcfcfc;
+border: 3px solid #fff;
+width: 800px;
+}
+input, select {
+	border: 1px solid #666666;
+	font-size: 12px;
+}
+</style>
+<script type="text/javascript">
+window.onload = init;
+function init (){
+	form = document.getElementById('gallery_generator');
+	form.quantity.value = "";
+	document.getElementById('jumpMenu').options[0].selected=true;
+}
+function MM_jumpMenu(targ,selObj,restore){ //v3.0
+  eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
+  if (restore) selObj.selectedIndex=0;
+}
+function ImgSrc(form, num) {
+	form.quantity.value = num;
+	var i=0;
+	for (i=0;i<=num;i++) {
+		if (i > 0) {
+			document.getElementById('images').innerHTML += '<fieldset><label for="thumb'+i+'">Image '+i+' Thumbnail src: </label><input type="text" name="images" id="thumb'+i+'" class="image-thumb"/>  <label for="image'+i+'">Image '+i+' Full Size src: </label><input type="text" name="images" id="image'+i+'" class="image-src"/>  <label for="caption'+i+'">Image '+i+' Caption: </label><input type="text" name="caption" id="caption'+i+'" class="image-caption"/></fieldset>';	
+		}
+	}
+}
+
+function submitImages(form) {
+	num = form.quantity.value;
+	var _code = "";
+	_code += '<!--  This is the large image display.  -->\n<div>\n<div id="image_wrap">\n<div style="height: 350px; display: block">\n<img alt="Trans" src="/images/global/trans.gif" />\n</div>\n<div id="photo_title"></div>\n</div>\n</div>\n\n';
+	_code += '<!-- This is your browse left button.-->\n<a class="prevPage browse left"></a>\n\n';
+	_code += '<!-- This is your image gallery container -->\n<div class="image-gallery">\n<div class="records gallery-records">\n\n<!-- This is your list of images. -->\n';
+
+	for (i=0;i<=num;i++) {
+		if (i > 0) {
+			alt = document.getElementById('image'+i);
+			thumb = document.getElementById('thumb'+i);
+			caption = document.getElementById('caption'+i);
+			captionStripped = caption.value.replace(/"/g,"'");
+				_code += '<!-- Image '+i+' -->\n<div class="gallery-item"><img alt="'+alt.value+'" src="'+thumb.value+'" title="'+captionStripped+'" /></div>\n\n'
+		}
+	}
+	_code += '<!-- This is the end of your gallery container. -->\n</div>\n</div>\n\n<!-- This is your right button -->\n<a class="nextPage browse right"></a>\n\n<!-- End Here -->';
+	form.sourceCode.value = _code;
+	return false;
+}
+</script>
+</head>
+
+<body>
+<h3>How to use this form</h3>
+<ol>
+<li>Select the number of images you would like to include in your gallery from the drop down below.</li>
+<li>Enter the thumbnail src, full size src, and caption in the appropriate text field for each image. If you do not have a thumbnail, enter the full size src in both the full size and thumbnail field.</li>
+
+<li>Click the "Generate your code" button.</li>
+<li>Your code will appear in the text area below. Copy the content in the text area and paste it in the html editor of the page you are editing.</li>
+</ol>
+<form action="#" method="get" name="gallery_generator" id="gallery_generator">
+<input type="hidden" id="quantity" name="quantity" value=""/>
+  <fieldset>
+    <label for="jumpMenu"> How many images would you like to include?</label>
+    <select name="jumpMenu" id="jumpMenu" onChange="ImgSrc(this.form, this.value)">
+    <option selected value="">- Please select -</option>
+
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+      <option>6</option>
+
+      <option>7</option>
+      <option>8</option>
+      <option>9</option>
+      <option>10</option>
+      <option>11</option>
+      <option>12</option>
+
+      <option>13</option>
+      <option>14</option>
+      <option>15</option>
+      <option>16</option>
+      <option>17</option>
+      <option>18</option>
+
+      <option>19</option>
+      <option>20</option>
+      <option>21</option>
+      <option>22</option>
+      <option>23</option>
+      <option>24</option>
+
+      <option>25</option>
+      <option>26</option>
+      <option>27</option>
+      <option>28</option>
+      <option>29</option>
+      <option>30</option>
+
+    </select>
+  </fieldset>
+  <div id="images"> 
+    <!--	<fieldset>
+    	<label for="image1">Image 1 SRC:</label>
+        <input type="text" name="images" id="image1"/>
+    </fieldset>--> 
+  </div>
+  <fieldset id="submitButton">
+  <input name="" value="Generate your code" type="button" onclick="submitImages(this.form)">
+  </fieldset>
+  <div id="source-container">
+    <fieldset>
+
+      <label>Your Source code:</label>
+      <label for="sourceCode"></label>
+      <div></div>
+      <textarea name="sourceCode" id="sourceCode" cols="65" rows="50"></textarea>
+    </fieldset>
+  </div>
+</form>
+</body>
+</html>
+

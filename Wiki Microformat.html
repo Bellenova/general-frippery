@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Microformat wiki</title>
+<link href='http://fonts.googleapis.com/css?family=Cabin' rel='stylesheet' type='text/css'>
+
+<style type="text/css">
+body {
+	font-family: 'Cabin', sans-serif;
+	font-size: 12px;
+	margin: 0 20px;
+}
+h1 {
+	font-size: 18px;
+}
+h2 {
+	font-size: 16px;
+}
+h3 {
+	font-size: 14px bold;
+}
+#globalWrapper {
+	width: 750px;
+}
+.toc {
+	width: 150px;
+	float: left;
+	border: 1px dashed #666666;
+	margin: 0 15px 15px 0;
+	
+}
+pre {
+	clear: both;
+	padding: 10px;
+	background-color: #f5f5f5;
+	border: 1px dashed #666666;
+	font-size: 11px;
+}
+</style>
+</head>
+<body>
+<div id="globalWrapper">
+  <div id="column-content">
+    <div id="content">
+      <h1 id="firstHeading" class="firstHeading">Wireframe Instructions</h1>
+      <div id="bodyContent">
+        <p>The wireframe was designed to keep the html as clean and simple as possible. We are moving away from using ids in the html and css because we want to keep the html neutral, in case dev or the client needs to flow different information than what we display in the design phase. The goal is to reduce our workload, as well as enabling us to use work coming directly from the design phase as templates, and to eliminate the huge number of hours used during implementation. </p>
+        <p>Please follow the wireframe structure as closely as possible. While we are no longer constrained by existing frontend templates, we need to follow the wireframe guidelines closely to produce clean templates and to help dev during implementation. </p>
+        <p><br />
+        </p>
+        <table id="toc" class="toc" data-summary="Contents">
+          <tr>
+            <td><div id="toctitle">
+                <h2>Contents</h2>
+              </div>
+              <ul>
+                <li class="toclevel-1"><a href="#Navigation"><span class="tocnumber">1</span> <span class="toctext">Navigation</span></a></li>
+                <li class="toclevel-1"><a href="#Layout"><span class="tocnumber">2</span> <span class="toctext">Layout</span></a>
+                  <ul>
+                    <li class="toclevel-2"><a href="#Sections"><span class="tocnumber">2.1</span> <span class="toctext">Sections</span></a></li>
+                    <li class="toclevel-2"><a href="#Boxes"><span class="tocnumber">2.2</span> <span class="toctext">Boxes</span></a></li>
+                    <li class="toclevel-2"><a href="#Records"><span class="tocnumber">2.3</span> <span class="toctext">Records</span></a></li>
+                    <li class="toclevel-2"><a href="#Type_Classes"><span class="tocnumber">2.4</span> <span class="toctext">Type Classes</span></a></li>
+                  </ul>
+                </li>
+                <li class="toclevel-1"><a href="#JQuery"><span class="tocnumber">3</span> <span class="toctext">JQuery</span></a></li>
+              </ul></td>
+          </tr>
+        </table>
+        <script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+        <a name="Navigation" id="Navigation"></a>
+        <h1> <span class="mw-headline">Navigation</span></h1>
+        <p>All navigation now uses the same class structure, whether it's top, left, or even the tabs that control widgets. Navigation can be in containers, but please keep the classname generic. In the wireframe, you'll see navigation-1 and navigation-2 containers. </p>
+        <p>The class structure is as follows: </p>
+        <pre>
+&lt;div class=&quot;navigation&quot;&gt;
+
+        &lt;h3&gt;Topics&lt;/h3&gt;
+        &lt;ul class=&quot;level1&quot;&gt;
+          &lt;li class=&quot;level1-li first&quot;&gt; &lt;a href=&quot;#&quot; class=&quot;link1&quot;&gt;Community&lt;/a&gt;
+
+            &lt;div class=&quot;sub-menu&quot;&gt;
+              &lt;ul class=&quot;level2&quot;&gt;
+                &lt;li class=&quot;level2-li&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;link1&quot;&gt;Navigation Link&lt;/a&gt;&lt;/li&gt;
+
+                &lt;li class=&quot;level2-li&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;link2&quot;&gt;Navigation Link&lt;/a&gt;&lt;/li&gt;
+                &lt;li class=&quot;level2-li&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;link3&quot;&gt;Navigation Link&lt;/a&gt;&lt;/li&gt;
+
+                &lt;li class=&quot;level2-li&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;link4&quot;&gt;Navigation Link&lt;/a&gt;&lt;/li&gt;
+                &lt;li class=&quot;level2-li&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;link5&quot;&gt;Navigation Link&lt;/a&gt;&lt;/li&gt;
+
+                &lt;li class=&quot;level2-li&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;link6&quot;&gt;Navigation Link&lt;/a&gt;&lt;/li&gt;
+                &lt;li class=&quot;level2-li&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;link7&quot;&gt;Navigation Link&lt;/a&gt;&lt;/li&gt;
+
+              &lt;/ul&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;level1-li last&quot;&gt; &lt;a href=&quot;#&quot; class=&quot;link2&quot;&gt;Store Locator&lt;/a&gt; &lt;/li&gt;
+
+        &lt;/ul&gt;
+      &lt;/div&gt;
+</pre>
+        <p>This differs from our current structure in that class names are assigned to every element in the navigation structure. This makes it much easier to style in the css, and to modify using javascript. Links have incremented classes for that same reason. If you wish to style or control an entire block of links, you can call the element. Additionally, you can display multiple columns in the submenu, which is done entirely through css (see wireframe for an example.) </p>
+        <p>Also, you will see the addition of a div around the submenu. This makes styling the submenu much easier. </p>
+        <a name="Layout" id="Layout"></a>
+        <h1> <span class="mw-headline">Layout</span></h1>
+        <p>The layout is often divided into two sections - the body and everything else. The body, according to our traditional design standards, is often centered in the middle of the browser. Everything else includes the logo, the top navigation(s), any masthead, footer, or any other element that can't be considered part of the main body column. These elements are contained in descriptive classes (logo, masthead, footer, navigation-1). All of these elements should be free floating, unless they are to be centered with the body. </p>
+        <p>Elements that appear in the body column should be inside the .document class. This class is used primarily for positioning.  There is an additional class called .container, that should have any styles associated with the main content area applied. In the wireframe, quick-search appears between the .document class and .container class - this is fine, since we still want quick search to be part of the body column but not inside the .container class. </p>
+        <a name="Sections" id="Sections"></a>
+        <h2> <span class="mw-headline">Sections</span></h2>
+        <p>Inside .container, you will see sequentially named classes called #section-1, #section-2, etc. These are our old "columns". Since we don't always design in the standard three column format, these layers are designed to exist in any shape or location, yet allow us to easily break up the page. They tend to run from right to left, top to bottom, exactly like the old "column" styles. Any number of sections may be added or subtracted to your comps, but please make sure they are sequential to allow someone who's unfamiliar with your design to easily modify the javascript/css. </p>
+        <a name="Boxes" id="Boxes"></a>
+        <h2> <span class="mw-headline">Boxes</span></h2>
+        <p>Each content block within a section has a sequentially named class called .box1, .box2, etc. for the same reason listed above. Boxes can have any kind of content, from navigation to polls, to a record. This comes in handy for right columns, where individual sections need special treatment, but often have the same layout. </p>
+        <a name="Records" id="Records"></a>
+        <h2> <span class="mw-headline">Records</span></h2>
+        <p>.records are the default container for most content used in the templates. Records can include products, events, classifieds, blogs, articles, search results, and basically anything else you can think of. Here is structure of an article record: </p>
+        <pre>
+&lt;div class=&quot;records&quot;&gt;
+&lt;h3&gt;Section Name&lt;/h3&gt;
+
+&lt;div class=&quot;record&quot;&gt;
+            &lt;div class=&quot;image&quot;&gt; &lt;a href=&quot;#&quot; class=&quot;url&quot;&gt;&lt;img src=&quot;images/global/image.jpg&quot; width=&quot;148&quot; height=&quot;148&quot;
+
+                                            alt=&quot;Wind Giants&quot;
+                                            border=&quot;0&quot; /&gt;&lt;/a&gt; &lt;/div&gt;
+            &lt;div class=&quot;kicker&quot;&gt;Kicker&lt;/div&gt;
+
+            &lt;div class=&quot;date&quot;&gt;November 3, 2009&lt;/div&gt;
+            &lt;h2 class=&quot;headline&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;url&quot;&gt;Headline&lt;/a&gt;&lt;/h2&gt;
+
+            &lt;h4 class=&quot;sub-headline&quot;&gt;Sub headline&lt;/h4&gt;
+            &lt;div class=&quot;byline&quot;&gt;Byline&lt;/div&gt;
+            &lt;div class=&quot;source&quot;&gt;Source&lt;/div&gt;
+
+            &lt;div class=&quot;author&quot;&gt;&lt;span class=&quot;first&quot;&gt;First&lt;/span&gt; &lt;span class=&quot;last&quot;&gt;Last&lt;/span&gt;&lt;/div&gt;
+            &lt;div class=&quot;hcite&quot;&gt; 
+                 &lt;span class=&quot;publication&quot;&gt;Publication&lt;/span&gt; 
+                 &lt;span class=&quot;type&quot;&gt;Book&lt;/span&gt; 
+                 &lt;span class=&quot;volume&quot;&gt;Volume 3&lt;/span&gt; 
+            &lt;/div&gt;
+
+            &lt;div class=&quot;comment-count&quot;&gt;&lt;a href=&quot;#&quot;&gt;Comments (2)&lt;/a&gt;&lt;/div&gt;
+            &lt;form name=&quot;api-disable&quot; action=&quot;&quot;&gt;
+              &lt;input type=&quot;radio&quot; class=&quot;star&quot; name=&quot;api-readonly-test&quot; value=&quot;1&quot;/&gt;
+
+              &lt;input type=&quot;radio&quot; class=&quot;star&quot; name=&quot;api-readonly-test&quot; value=&quot;2&quot;/&gt;
+              &lt;input type=&quot;radio&quot; class=&quot;star&quot; name=&quot;api-readonly-test&quot; value=&quot;3&quot;/&gt;
+
+              &lt;input type=&quot;radio&quot; class=&quot;star&quot; name=&quot;api-readonly-test&quot; value=&quot;4&quot;/&gt;
+              &lt;input type=&quot;radio&quot; class=&quot;star&quot; name=&quot;api-readonly-test&quot; value=&quot;5&quot;/&gt;
+
+            &lt;/form&gt;
+            &lt;div class=&quot;abstract&quot;&gt; Aliquam erat volutpat. Maecenas erat nisi, condimentum sed, 
+pretium vel, aliquam non, diam. Vivamus blandit elit nec urna. Aenean arcu. Vivamus
+ placerat mauris in justo. Aliquam erat volutpat. Maecenas erat nisi, condimentum sed, pretium 
+vel, aliquam non, diam. Vivamus blandit elit nec urna. Aenean arcu.
+&lt;a href=&quot;#&quot; class=&quot;more&quot;&gt;Read More&lt;/a&gt;&lt;/div&gt;
+
+          &lt;/div&gt;
+          &lt;a href=&quot;#&quot; class=&quot;more&quot;&gt;More Top Stories&lt;/a&gt; &lt;/div&gt;
+</pre>
+        <p>And here is the structure for an event record: </p>
+        <pre>
+&lt;div class=&quot;records&quot;&gt;
+          &lt;h3&gt;Upcoming Events&lt;/h3&gt;
+          &lt;div class=&quot;record vevent&quot;&gt;
+            &lt;h2 class=&quot;headline&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;url&quot;&gt;Headline&lt;/a&gt;&lt;/h2&gt;
+
+            &lt;h4 class=&quot;sub-headline&quot;&gt;Sub headline&lt;/h4&gt;
+            &lt;div class=&quot;date dtstart&quot;&gt;November 3, 2009&lt;/div&gt;
+            -
+            &lt;div class=&quot;date dtend&quot;&gt;November 3, 2009&lt;/div&gt;
+
+            &lt;div class=&quot;location&quot;&gt;Location&lt;/div&gt;
+            &lt;div class=&quot;abstract description&quot;&gt; Aliquam erat volutpat. Maecenas erat nisi, condimentum sed, 
+pretium vel, aliquam non, diam. Vivamus blandit elit nec urna. Aenean arcu. Vivamus placerat mauris in 
+justo. Aliquam erat volutpat. Maecenas erat nisi, condimentum sed, pretium vel, aliquam non, diam. 
+Vivamus blandit elit nec urna. Aenean arcu.
+            &lt;a href=&quot;#&quot; class=&quot;more&quot;&gt;Read More&lt;/a&gt;&lt;/div&gt;
+
+            &lt;div class=&quot;tags&quot;&gt;Tags: &lt;a href=&quot;#&quot;&gt;tags&lt;/a&gt;&lt;a href=&quot;#&quot;&gt; tags&lt;/a&gt;&lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;a href=&quot;#&quot; class=&quot;more&quot;&gt;More Events&lt;/a&gt; &lt;/div&gt;
+</pre>
+        <p>In the example above, you can see that additional classes have been appended to the generic record structure. This is solely to conform with the hcalendar standard. All events should have this structure, but extra classes should not be appended to any other format. </p>
+        <p>Each .records class can contain several .record classes. It should not contain anything else. The .record class can contain absolutely anything. </p>
+        <a name="Type_Classes" id="Type_Classes"></a>
+        <h2> <span class="mw-headline"> Type Classes </span></h2>
+        <p>You can further refine your css if you wish by adding type classes to the .records div: </p>
+        <pre>
+
+&lt;div class=&quot;records event&quot;&gt;
+&lt;div class=&quot;record&quot;&gt;...&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+        <p>This allows us the flexibility to control all events, articles, links, or other item that have this marker. </p>
+        <p><br />
+          <i>Note: I will be putting up a master list of all classes used in a record as soon as all are complete.</i> </p>
+        <a name="JQuery" id="JQuery"></a>
+        <h1> <span class="mw-headline">JQuery</span></h1>
+        <p>There is a library called Jquery Tools installed by default. This provides a wide range of effects in one script. Less includes means less load time. </p>
+        <p><a href="http://flowplayer.org/tools/index.html" class="external free" title="http://flowplayer.org/tools/index.html" rel="nofollow">http://flowplayer.org/tools/index.html</a> </p>
+        <p>Before adding a jquery plugin, check to see if the effect can be done with this library. If there are any questions about what can or cannot be done with this library, please feel free to ask. </p>
+
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

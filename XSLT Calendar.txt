@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:site="http://schema.tomato.gardenplate.com/site" xmlns:xsite="http://schema.tomato.gardenplate.com/site/xslt" xmlns:rev3="http://schema.epublishing.com/rev3" xmlns:xcore="http://schema.epublishing.com/rev3/xslt" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xxsd="http://schema.epublishing.com/2001/XMLSchema/xslt">
+	<xsl:import href="shared/layouts/3columns.xslt"/>
+	<xsl:output method="html" version="1.0" encoding="UTF-8" indent="yes"/>
+	<xsl:template name="Template.CssStyleSheet">
+		@import url("/media/css/event.css");
+	</xsl:template>
+	<xsl:template name="Template.IECssStyleSheet">
+		@import url("/media/css/default.ie.css");
+	</xsl:template>
+	<xsl:template name="Template.Javascript">
+	</xsl:template>
+	<xsl:template name="MidColumn.Default">
+		<xsl:variable name="url">
+			<xsl:choose>
+			<xsl:when test="rev3:container[@xid='section.main']/rev3:item[ normalize-space (rev3:name/text()) = 'url' ]/rev3:value = '/events/give?'">/events/give</xsl:when>
+			<xsl:otherwise>/events</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
+		<script>
+			<xsl:text><![CDATA[
+				function requestEvent(articleId) {
+					var d = $('hiddenIframe');
+					 d.src = "/event/popup?eventId="+articleId
+				}
+				
+			]]></xsl:text>
+		</script>
+		<div id="events">
+		<xsl:call-template name="Advertisement.Banner"/>
+			<div id="get-give">
+				<xsl:choose>
+					<xsl:when test="rev3:container[@xid='section.main']/rev3:item[ normalize-space (rev3:name/text()) = 'url' ]/rev3:value = '/events/give?'">
+						<a href="/events/calendar?begin_d={rev3:container[@xid='section.main']/rev3:item[ normalize-space (rev3:name/text()) = 'event.current.month' ]/rev3:value}&amp;end_d={rev3:container[@xid='section.main']/rev3:item[ normalize-space (rev3:name/text()) = 'event.current.month.end' ]/rev3:value}">All Events</a>
+					</xsl:when>
+					<xsl:otherwise>
+						<a href="/events/give/calendar?begin_d={rev3:container[@xid='section.main']/rev3:item[ normalize-space (rev3:name/text()) = 'event.current.month' ]/rev3:value}&amp;end_d={rev3:container[@xid='section.main']/rev3:item[ normalize-space (rev3:name/text()) = 'event.current.month.end' ]/rev3:value}">Give and Get Back</a>
+					</xsl:otherwise>
+				</xsl:choose>
+			</div>
+			<div class="section">
+				<xsl:choose>
+					<xsl:when test="rev3:item[ normalize-space (rev3:name/text()) = 'title' ]/rev3:value|rev3:container[@xid='section.main']/rev3:item[ normalize-space (rev3:name/text()) = 'title' ]/rev3:value">
+						<xsl:value-of select="rev3:item[ normalize-space (rev3:name/text()) = 'title' ]/rev3:value|rev3:container[@xid='section.main']/rev3:item[ normalize-space (rev3:name/text()) = 'title' ]/rev3:value"/>
+					</xsl:when>
+					<xsl:otherwise>
+						Events
+					</xsl:otherwise>
+				</xsl:choose>
+			</div>
+			<div id="events-container">
+				<div id="event-calendar">
+					<table class="events-top" border="0" cellspacing="0" cellpadding="0">
+					<tr valign="top">
+			<xsl:if test="rev3:container[@xid='section.main']/rev3:item[ normalize-space (rev3:name/text()) = 'event.previous.month' ]/rev3:value">
+						<td>
+							<a href="{$url}/list?begin_d={rev3:container[@xid='section.main']/rev3:item[ normalize-space (rev3:name/text()) = 'event.previous.month' ]/rev3:value}&amp;end_d={rev3:container[@xid='section.main']/rev3:item[ normalize-space (rev3:name/text()) = 'event.previous.month.end' ]/rev3:value}">
+								<img src="/media/images/event/buttonleft.gif" alt="Previous Month" width="30" height="18" border="0" class="buttons"/>
+							</a>
+						</td>
+						</xsl:if>
+						<td>
+							<h1>Events for <xsl:value-of select="rev3:container[@xid='section.main']/rev3:item[ normalize-space (rev3:name/text()) = 'current.month.display' ]/rev3:value"/>
+							</h1>
+						</td>
+						<xsl:if test="rev3:container[@xid='section.main']/rev3:item[ normalize-space (rev3:name/text()) = 'event.next.month' ]/rev3:value">
+						<td>
+							<a href="{$url}/list?begin_d={rev3:container[@xid='section.main']/rev3:item[ normalize-space (rev3:name/text()) = 'event.next.month' ]/rev3:value}&amp;end_d={rev3:container[@xid='section.main']/rev3:item[ normalize-space (rev3:name/text()) = 'event.next.month.end' ]/rev3:value}">
+								<img src="/media/images/event/buttonright.gif" alt="Next Month" width="30" height="18" border="0" class="buttons"/>
+							</a>
+</td>
+</xsl:if><td>
+
+							<a  href="{$url}/list?begin_d={rev3:container[@xid='section.main']/rev3:item[ normalize-space (rev3:name/text()) = 'event.current.month' ]/rev3:value}&amp;end_d={rev3:container[@xid='section.main']/rev3:item[ normalize-space (rev3:name/text()) = 'event.current.month.end' ]/rev3:value}" id="event-list-button2" class="event-button">
+						LIST VIEW
+					</a>
+						</td>
+						<td>
+							<a href="{$url}/calendar?begin_d={rev3:container[@xid='section.main']/rev3:item[ normalize-space (rev3:name/text()) = 'event.current.month' ]/rev3:value}&amp;end_d={rev3:container[@xid='section.main']/rev3:item[ normalize-space (rev3:name/text()) = 'event.current.month.end' ]/rev3:value}" id="event-calendar-button2" class="event-button-active">
+						CALENDAR VIEW
+					</a>
+						</td>
+					</tr>
+				</table>
+					<xsl:apply-templates select="/rev3:document/rev3:container[@xid='section.main']" mode="event.calendar"/>
+				</div>
+				<div xmlns="http://www.w3.org/1999/xhtml" style="display: none;" id="view-hidden">
+					<div id="view-event">
+						<div id="event-content">
+							<a class="close" onclick="return HideObj ('view-hidden');" href="#">close</a>
+							<iframe src="/media/images/blank.html" id="hiddenIframe" name="hiddenIframe" frameborder="0" style="border:0px none;">.</iframe>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</xsl:template>
+	
+	<xsl:template match="rev3:container" mode="event.default">
+		<xsl:choose>
+			<xsl:when test="rev3:event">
+				<xsl:for-each select="rev3:event">
+					<xsl:apply-templates select="." mode="section.calendar">
+						<xsl:with-param name="href">#<xsl:value-of select="rev3:db-id"/></xsl:with-param>
+						<xsl:with-param name="onclick">requestEvent (<xsl:value-of select="rev3:db-id"/>);ToggleMoreInfo (event);</xsl:with-param>
+						<xsl:with-param name="more">View event details</xsl:with-param>
+					</xsl:apply-templates>
+				</xsl:for-each>
+			</xsl:when>
+			<xsl:otherwise>
+				<h1>No events found for this month.</h1>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
+	
+	<xsl:template match="rev3:container" mode="event.calendar">
+		<div class="events-box">
+			<xsl:call-template name="calendar.script">
+			</xsl:call-template>
+		</div>
+	</xsl:template>
+
+<!-- HERE'S THE GOOD STUFF! -->
+
+<xsl:template name="calendar.script">
+		<xsl:variable name="thisDate" select="date:date (rev3:item[ normalize-space (rev3:name/text()) = 'event.current.month' ]/rev3:value)"/>
+		<xsl:variable name="month" select="date:month-in-year ($thisDate) + 1"/>
+		<xsl:variable name="year" select="date:year ($thisDate)"/>
+		<xsl:variable name="yearFormat" select="substring ($year, 3, 2)"/>
+		<xsl:variable name="firstDate" select="date:date (concat ($year, '-', $month, '-01'))"/>
+		<xsl:variable name="tempLastDate">
+			<xsl:choose>
+				<xsl:when test=" $month = '1' ">31</xsl:when>
+				<xsl:when test=" $month = '2' ">
+					<xsl:variable name="feb29" select="date:date (concat ($year, '-02-29'))"/>
+					<xsl:choose>
+						<xsl:when test="$feb29 = '' ">28</xsl:when>
+						<xsl:otherwise>29</xsl:otherwise>
+					</xsl:choose>
+				</xsl:when>
+				<xsl:when test=" $month = '3' ">31</xsl:when>
+				<xsl:when test=" $month = '4' ">30</xsl:when>
+				<xsl:when test=" $month = '5' ">31</xsl:when>
+				<xsl:when test=" $month = '6' ">30</xsl:when>
+				<xsl:when test=" $month = '7' ">31</xsl:when>
+				<xsl:when test=" $month = '8' ">31</xsl:when>
+				<xsl:when test=" $month = '9' ">30</xsl:when>
+				<xsl:when test=" $month = '10' ">31</xsl:when>
+				<xsl:when test=" $month = '11' ">30</xsl:when>
+				<xsl:when test=" $month = '12' ">31</xsl:when>
+			</xsl:choose>
+		</xsl:variable>
+		<xsl:variable name="lastDate" select="date:date (concat ($year, '-', $month, '-', normalize-space ($tempLastDate)))"/>
+		<xsl:variable name="weekDay" select="date:day-name($firstDate)"/>
+		<xsl:variable name="calStart">
+			<xsl:choose>
+				<xsl:when test=" $weekDay = 'Sunday'">1</xsl:when>
+				<xsl:when test=" $weekDay = 'Monday'">2</xsl:when>
+				<xsl:when test=" $weekDay = 'Tuesday'">3</xsl:when>
+				<xsl:when test=" $weekDay = 'Wednesday'">4</xsl:when>
+				<xsl:when test=" $weekDay = 'Thursday'">5</xsl:when>
+				<xsl:when test=" $weekDay = 'Friday'">6</xsl:when>
+				<xsl:when test=" $weekDay = 'Saturday'">7</xsl:when>
+			</xsl:choose>
+		</xsl:variable>
+		<xsl:variable name="count" select="$tempLastDate"/>
+		<xsl:variable name="total" select="$calStart + $count - 1"/>
+		<xsl:variable name="overflow" select="$total mod 7"/>
+		<xsl:variable name="nelements">
+			<xsl:choose>
+				<xsl:when test="$overflow > 0">
+					<xsl:value-of select="$total + 7 - $overflow"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="$total"/>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
+		<table summary="calendar" id="EventsTable">
+			<tr valign="top">
+				<th>Sun</th>
+				<th>Mon</th>
+				<th>Tue</th>
+				<th>Wed</th>
+				<th>Thu</th>
+				<th>Fri</th>
+				<th>Sat</th>
+			</tr>
+			<xsl:call-template name="month">
+				<xsl:with-param name="nelements" select="$nelements"/>
+				<xsl:with-param name="calStart" select="$calStart"/>
+				<xsl:with-param name="count" select="$count"/>
+				<xsl:with-param name="month" select="$month"/>
+				<xsl:with-param name="year" select="$yearFormat"/>
+			</xsl:call-template>
+		</table>
+	</xsl:template>
+	<xsl:template name="month">
+		<xsl:param name="nelements"/>
+		<xsl:param name="calStart"/>
+		<xsl:param name="count"/>
+		<xsl:param name="month"/>
+		<xsl:param name="year"/>
+		<xsl:param name="index" select="1"/>
+		<xsl:if test="$index &lt; $nelements">
+			<xsl:call-template name="week">
+				<xsl:with-param name="index" select="$index"/>
+				<xsl:with-param name="nelements" select="$nelements"/>
+				<xsl:with-param name="calStart" select="$calStart"/>
+				<xsl:with-param name="count" select="$count"/>
+				<xsl:with-param name="month" select="$month"/>
+				<xsl:with-param name="year" select="$year"/>
+			</xsl:call-template>
+			<xsl:call-template name="month">
+				<xsl:with-param name="index" select="$index + 7"/>
+				<xsl:with-param name="nelements" select="$nelements"/>
+				<xsl:with-param name="count" select="$count"/>
+				<xsl:with-param name="calStart" select="$calStart"/>
+				<xsl:with-param name="month" select="$month"/>
+				<xsl:with-param name="year" select="$year"/>
+			</xsl:call-template>
+		</xsl:if>
+	</xsl:template>
+	<xsl:template name="week">
+		<xsl:param name="nelements"/>
+		<xsl:param name="calStart"/>
+		<xsl:param name="count"/>
+		<xsl:param name="month"/>
+		<xsl:param name="year"/>
+		<xsl:param name="index" select="1"/>
+		<tr valign="top">
+			<xsl:call-template name="days">
+				<xsl:with-param name="index" select="$index"/>
+				<xsl:with-param name="nelements" select="$nelements"/>
+				<xsl:with-param name="calStart" select="$calStart"/>
+				<xsl:with-param name="counter" select="$index + 6"/>
+				<xsl:with-param name="count" select="$count"/>
+				<xsl:with-param name="month" select="$month"/>
+				<xsl:with-param name="year" select="$year"/>
+			</xsl:call-template>
+		</tr>
+	</xsl:template>
+	<xsl:template name="days">
+		<xsl:param name="nelements"/>
+		<xsl:param name="calStart"/>
+		<xsl:param name="count"/>
+		<xsl:param name="month"/>
+		<xsl:param name="year"/>
+		<xsl:param name="index" select="1"/>
+		<xsl:param name="counter" select="1"/>
+		<xsl:param name="calendarDate" select="$index - $calStart + 1"/>
+		<xsl:param name="calendarDateFormat">
+			<!--<xsl:if test="string-length($calendarDate) = 1">0</xsl:if>-->
+			<xsl:value-of select="$calendarDate"/>
+		</xsl:param>
+		<xsl:param name="calendarFull"><xsl:value-of select="$month"/>/<xsl:value-of select="$calendarDateFormat"/>,&#xa0;20<xsl:value-of select="$year"/></xsl:param>
+		<!--<xsl:choose>
+			<xsl:when test="$index &lt; $calStart">
+				<td>-</td>
+			</xsl:when>
+			<xsl:when test="$index - $calStart + 1 > $count">
+				<td>-</td>
+			</xsl:when>
+			<xsl:when test="$index > $calStart - 1">
+				<td>
+					<xsl:value-of select="$calendarDateFormat"/>
+					<xsl:for-each select="/rev3:document/rev3:container[@xid='section.main']/rev3:event">
+						<xsl:if test="rev3:begin-date = $calendarFull">
+							<div>
+								<a href="#" onclick="requestEvent ({rev3:db-id});ToggleMoreInfo (event);">
+									<xsl:value-of select="rev3:title"/>
+								</a>
+							</div>
+						</xsl:if>
+					</xsl:for-each>
+				</td>
+			</xsl:when>
+		</xsl:choose>-->
+		<td><xsl:value-of select="$calendarFull"/>&#xa0;<xsl:value-of select="/rev3:document/rev3:container[@xid='section.main']/rev3:event/rev3:begin-date"/></td>
+		<xsl:if test="$counter > $index">
+			<xsl:call-template name="days">
+				<xsl:with-param name="index" select="$index + 1"/>
+				<xsl:with-param name="counter" select="$counter"/>
+				<xsl:with-param name="nelements" select="$nelements"/>
+				<xsl:with-param name="calStart" select="$calStart"/>
+				<xsl:with-param name="count" select="$count"/>
+				<xsl:with-param name="month" select="$month"/>
+				<xsl:with-param name="year" select="$year"/>
+			</xsl:call-template>
+		</xsl:if>
+	</xsl:template>
+</xsl:stylesheet>

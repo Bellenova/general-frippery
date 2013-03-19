@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Bug B Queue</title>
+<link href='http://fonts.googleapis.com/css?family=Muli|Cutive|Lobster' rel='stylesheet' type='text/css'>
+<script src='http://ajax.microsoft.com/ajax/jquery/jquery-1.4.2.min.js' type='text/javascript'></script>
+<style type="text/css" title="currentStyle">
+@import "css/demo_table.css";
+body {
+	font-family: 'Muli', sans-serif;
+	margin-bottom: 20px;
+	margin-left: 50px;
+	margin-right: 50px;
+	margin-top: 20px;
+	text-align: left;
+	background: url('images/background.gif') repeat-x #a1bedc;
+}
+a, a:link, a:active {
+	color: #a1bedc;
+	text-decoration: none;
+}
+#bug-input, #bug-log {
+	background-color:#fcfcfc;
+	text-align:left;
+	color:#000;
+	font-size:	0.875em;
+	line-height: 20px;
+	-webkit-box-shadow:0 0 10px 10px #a1bedc;
+	-moz-box-shadow:0 0 10px 10px #a1bedc;
+	box-shadow:0 0 10px 10px #a1bedc;
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	border-radius:10px;
+	border:2px solid #fff;
+	z-index:999;
+	margin-bottom: 20px;
+}
+a:hover {
+	text-decoration: underline;
+}
+input, select, textarea {
+	border: 1px solid #ccc;
+	font-family: 'Muli', serif;
+	font-size: 12px;
+	padding: 3px;
+	line-height: 18px;
+	width: 220px;
+}
+#bug-log {
+	float: right;
+	margin-left: 30px;
+	width: 29%;
+	padding: 10px;
+}
+#bug-input {
+	width: 60%;
+	float: left;
+	font-size: 12px;
+	padding: 10px;
+}
+label {
+	font-weight: 700;
+	width: 150px;
+	display: block;
+	float: left;
+	font-size: 12px;
+}
+#bug-input {
+	min-width: 550px;
+}
+#bug-details td {
+	margin: 0;
+	padding: 3px;
+	border: 0px none;
+}
+#bug-details textarea {
+	width: 80%;
+}
+#bug-log tr:nth-child(even) {
+background: #fff
+}
+#bug-log td {
+	border: 0px none;
+	padding: 5px
+}
+#bug-log label {
+	float: none;
+	margin-bottom: 5px;
+}
+#bug-log textarea {
+	margin-bottom: 20px;
+	width: 90%
+}
+#bug-log .flag {
+	margin-right: 10px;
+}
+#bug-log .date {
+	color: #666;
+	font-size: 11px;
+	margin-right: 10px;
+}
+#bug-log .name {
+	font-weight: 700;
+	color: #666;
+	font-size: 11px;
+}
+#bug-log .comments {
+	margin: 10px 0;
+	font-size: 11px;
+}
+.submit {
+	text-align: center;
+	padding: 10px;
+}
+.submit input {
+	margin: 10px;
+}
+</style>
+</head>
+<body>
+<section id="bug-container">
+  <form action="#">
+    <div id="bug-input">
+      <table id="bug-details">
+        <tr>
+          <td><label for="bug-number">Bug Number</label>
+            <input name="bug-number" id="bug-number" type="text" readonly="readonly"/></td>
+          <td><label for="client-bug-number">Client Bug Number</label>
+            <input name="client-bug-number" id="client-bug-number" type="text"/></td>
+        </tr>
+        <tr>
+          <td><label>Entered on:</label>
+            12/15/2012</td>
+          <td><label for="reported-on">Reported on</label>
+            <input name="reported-on" id="reported-on" type="text"/></td>
+        </tr>
+        <tr>
+          <td><label for="status">Status</label>
+            <select name="status" id="status">
+              <option value="">-- Select One --</option>
+              <option value="Open">Open</option>
+              <option value="Closed">Closed</option>
+              <option value="Modified">Modified</option>
+            </select></td>
+          <td><label for="section">Project Section</label>
+            <select name="section" id="section">
+              <option value="">-- Select One --</option>
+            </select></td>
+        </tr>
+        <tr>
+          <td><label for="assigned-to">Assigned to</label>
+            <select name="assigned-to" id="assigned-to">
+              <option value="">-- Select One --</option>
+            </select></td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td><label for="class">Class</label>
+            <select name="class" id="class">
+              <option value="">-- Select One --</option>
+            </select></td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td><label for="priority">Priority</label>
+            <select name="priority" id="priority">
+              <option value="">-- Select One --</option>
+            </select></td>
+          <td><label for="release">Release</label>
+            <input name="release" id="release" type="text"/></td>
+        </tr>
+        <tr>
+          <td colspan="2"><label for="summary">Summary</label>
+            <textarea name="summary" id="summary" rows="5"></textarea></td>
+        </tr>
+        <tr>
+          <td colspan="2"><label for="description">Description</label>
+            <textarea name="description" id="description" rows="15"></textarea></td>
+        </tr>
+        <tr>
+          <td colspan="2"><label for="files">Files</label>
+            <input type="file" name="files" id="files" /></td>
+        </tr>
+        <tr>
+          <td rowspan="2"><label for="reported-by">Reported By</label>
+            <select name="reported-by" id="reported-by">
+              <option value="">-- Select One --</option>
+            </select></td>
+          <td><label for="new-name">Or, Add New Name</label>
+            <input name="new-name" id="new-name" type="text"/></td>
+        </tr>
+        <tr>
+          <td><label for="new-email">New Email</label>
+            <input name="new-email" id="new-email" type="text"/></td>
+        </tr>
+        <tr>
+          <td><label for="platform">Platform</label>
+            <select name="platform" id="platform" multiple>
+              <option value="">-- Select One --</option>
+              <option value="option1">Option 1</option>
+              <option value="option2">Option 2</option>
+              <option value="option3">Option 3</option>
+            </select></td>
+          <td><label for="os">OS</label>
+            <select name="os" id="os" multiple>
+              <option value="">-- Select One --</option>
+              <option value="option1">Option 1</option>
+              <option value="option2">Option 2</option>
+              <option value="option3">Option 3</option>
+            </select></td>
+        </tr>
+        <tr>
+          <td><label for="browser">Browser</label>
+            <select name="browser" id="browser" multiple>
+              <option value="">-- Select One --</option>
+              <option value="option1">Option 1</option>
+              <option value="option2">Option 2</option>
+              <option value="option3">Option 3</option>
+            </select></td>
+          <td><label for="version">Version</label>
+            <select name="version" id="version" multiple>
+              <option value="">-- Select One --</option>
+              <option value="option1">Option 1</option>
+              <option value="option2">Option 2</option>
+              <option value="option3">Option 3</option>
+            </select></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="submit"><input type="submit" value="Commit Changes / Add Bug" id="submit" name="submit"/>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div id="bug-log">
+      <table >
+        <tr>
+          <td><label for="new-comment">New Comment</label>
+            <textarea name="new-comment" id="new-comment" cols="50"></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="flag"><img src="images/flag-off.png" alt="Open"></span> <span class="date">12/15/2011 14:15</span><span class="name">John Boynton</span>
+            <div class="comments">Nam pretium, purus in feugiat pharetra, est leo rhoncus nisl, eget euismod neque tellus ac nibh.</div></td>
+        </tr>
+        <tr>
+          <td><span class="flag"><img src="images/flag-off.png" alt="Open"></span> <span class="date">12/15/2011 14:15</span><span class="name">John Boynton</span>
+            <div class="comments">Nam pretium, purus in feugiat pharetra, est leo rhoncus nisl, eget euismod neque tellus ac nibh.</div></td>
+        </tr>
+        <tr>
+          <td><span class="flag"><img src="images/flag-off.png" alt="Open"></span> <span class="date">12/15/2011 14:15</span><span class="name">John Boynton</span>
+            <div class="comments">Nam pretium, purus in feugiat pharetra, est leo rhoncus nisl, eget euismod neque tellus ac nibh.</div></td>
+        </tr>
+        <tr>
+          <td><span class="flag"><img src="images/flag-on.png" alt="Flagged"></span> <span class="date">12/15/2011 14:15</span><span class="name">John Boynton</span>
+            <div class="comments">Nam pretium, purus in feugiat pharetra, est leo rhoncus nisl, eget euismod neque tellus ac nibh.</div></td>
+        </tr>
+        <tr>
+          <td><span class="flag"><img src="images/flag-off.png" alt="Open"></span> <span class="date">12/15/2011 14:15</span><span class="name">John Boynton</span>
+            <div class="comments">Nam pretium, purus in feugiat pharetra, est leo rhoncus nisl, eget euismod neque tellus ac nibh.</div></td>
+        </tr>
+      </table>
+    </div>
+  </form>
+</section>
+</body>
+</html>
