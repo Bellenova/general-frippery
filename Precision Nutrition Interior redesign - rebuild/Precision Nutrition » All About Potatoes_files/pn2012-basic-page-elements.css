@@ -1,0 +1,48 @@
+/* Effective stylesheet produced by snapshot save */
+html, body, img, h1, h2, h3, h4, h5, h6, p, ol, ul, li, pre, code, address, variable, form, fieldset, blockquote { padding: 0px; margin: 0px; font-size: 100%; font-weight: normal; }
+ol, ul, blockquote { margin-left: 1.4em; }
+ol { list-style: decimal outside none; }
+img { border: medium none; outline: medium none; }
+object { outline: medium none; }
+body { font-family: "news-gothic-std-n4","news-gothic-std",Arial,Helvetica,sans-serif; color: black; font-size: 17px; background-color: rgb(238, 238, 238); }
+p, h1, h2, h3, h4, blockquote { font-family: "news-gothic-std-n4","news-gothic-std",Arial,Helvetica,sans-serif; padding-bottom: 18px; }
+p, blockquote { line-height: 27px; }
+.feature_paragraph, .featured_paragraph { font-size: 24px; line-height: 1.5em; }
+ol, ul { line-height: 27px; padding-bottom: 10px; }
+li { padding-bottom: 8px; }
+hr { border: 0px none; background-color: rgb(204, 204, 204); height: 1px; color: rgb(204, 204, 204); margin: 30px auto; }
+hr.pn_blue { background-color: rgb(0, 187, 227); }
+h1 { color: rgb(0, 187, 227); font-size: 64px; font-weight: normal; padding-bottom: 26px; }
+h2 { padding-top: 18px; font-size: 30px; color: black; font-weight: normal; }
+h3 { padding-top: 18px; font-size: 20px; line-height: 30px; font-weight: bold; text-transform: uppercase; color: rgb(0, 187, 227); }
+h4 { padding-top: 18px; font-size: 22px; line-height: 1.5em; color: black; font-weight: normal; text-transform: none; }
+a, a:visited, a:active, a:link, a:hover { color: rgb(10, 123, 170); text-decoration: underline; }
+a:hover { color: rgb(0, 187, 227); }
+.button { font-size: 21px; background-color: rgb(0, 187, 227); padding: 6px 30px; border-radius: 20px 20px 20px 20px; display: inline-block; margin: 0px auto; width: auto; overflow: visible; cursor: pointer; text-decoration: none ! important; color: rgb(0, 0, 0) ! important; box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.25); border: medium none; font-family: "news-gothic-std-n4","news-gothic-std",Arial,Helvetica,sans-serif; }
+.button.reverse_colours { color: rgb(255, 255, 255) ! important; }
+.button.reverse_colours em { color: rgb(0, 0, 0) ! important; }
+.button:hover, .button.small:hover { background-color: rgb(44, 218, 255); }
+.button.active, .button.small.active { background-color: rgb(44, 218, 255); }
+.button.small { font-size: 14px; background-color: rgb(0, 187, 227); padding: 4px 20px 5px; box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.35); line-height: 14px; }
+.button.grey { background-color: rgb(221, 221, 221); }
+.button.grey:hover { background-color: rgb(238, 238, 238); }
+.button em { color: rgb(255, 255, 255); font-family: Georgia,serif,"Times New Roman"; }
+.clear_both { clear: both ! important; }
+.bold { font-weight: bold ! important; }
+.upper { text-transform: uppercase ! important; }
+.lower { text-transform: lowercase ! important; }
+.caps { text-transform: capitalize ! important; }
+.pn_blue { color: rgb(0, 187, 227) ! important; }
+.no_margin_bottom { margin-bottom: 0px ! important; }
+.no_margin_top { margin-top: 0px ! important; }
+.display_inline { display: inline ! important; }
+.display_block { display: block ! important; }
+.no_padding { padding: 0px ! important; }
+.no_padding_bottom { padding-bottom: 0px ! important; }
+.no_padding_top { padding-top: 0px ! important; }
+#container { width: 100%; min-width: 960px; margin: 0px auto; background-color: rgb(255, 255, 255); }
+#container_inner { width: 960px; margin: 0px auto; overflow: visible; height: auto; padding-bottom: 60px; padding-top: 1px; }
+#container_inner.two_column { padding-top: 20px; }
+#main_column { float: left; height: auto; overflow: visible; width: 600px; }
+#sidebar { float: right; height: auto; overflow: visible; width: 280px; }
+#big_image { position: relative; width: 960px; height: 506px; margin-bottom: 30px; }

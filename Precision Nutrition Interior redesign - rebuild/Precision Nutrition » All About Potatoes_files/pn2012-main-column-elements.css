@@ -1,0 +1,126 @@
+/* Effective stylesheet produced by snapshot save */
+#post_category { border-bottom: 2px dashed rgb(204, 204, 204); font-size: 24px; font-weight: bold; text-transform: uppercase; color: rgb(51, 51, 51); margin-bottom: 20px; padding-bottom: 10px; }
+#author_and_date { font-family: Georgia,serif,"Times New Roman"; color: rgb(125, 127, 130); font-style: italic; margin-top: 26px; font-size: 14px; }
+#author_and_date a { font-family: "news-gothic-std-n4","news-gothic-std",Arial,Helvetica,sans-serif; text-transform: uppercase; font-style: normal; color: rgb(0, 187, 227); font-weight: bold; }
+#post_content { clear: both; margin-top: 60px; }
+#post_content > p:first-child { font-size: 24px; line-height: 1.5em; }
+#post_content p .image_caption { margin-top: 10px; font-size: 14px; color: black; font-weight: bold; }
+#intro_text { padding-bottom: 40px; }
+#main_column div.image_caption { margin-top: 10px; margin-bottom: 30px; font-size: 14px; color: black; font-weight: bold; text-align: center; }
+.caption1, .caption2 { margin-top: 10px; padding: 20px 0px; border-top: 2px dashed rgb(153, 153, 153); border-bottom: 2px dashed rgb(153, 153, 153); margin-bottom: 30px; color: rgb(0, 187, 227); }
+.caption1 { font-size: 38px; }
+.caption2 { font-size: 30px; }
+.caption1.bottom_blurb, .caption2.bottom_blurb { margin-top: 40px; }
+.callout_facebook_link { font-size: 29px; }
+dl { margin-top: 10px; }
+p.image_and_caption, div.image_and_caption, .wp-caption { width: 100% ! important; font-size: 14px; color: black; font-weight: bold; text-align: center; margin-top: 10px; margin-bottom: 18px; padding-bottom: 0px; }
+p.image_and_caption img, div.image_and_caption img, .wp-caption img { display: block; margin: 0px auto 10px; }
+p.image_and_caption p, div.image_and_caption p, #post_content > p.image_and_caption > img, .wp-caption p, .wp-caption dd { padding: 0px; margin: 0px; font-weight: bold; font-size: 14px; text-align: center; }
+#post_content > p.image_and_caption > img { margin: 0px auto 10px; }
+#post_content > table { margin-bottom: 18px; }
+#post_content > img, #post_content > p > img, .aligncenter { display: block; margin-left: auto; margin-right: auto; }
+#post_content > img, #post_content > p > img { margin-top: 10px; margin-bottom: 18px; }
+.share_container { margin-top: 10px; padding-bottom: 40px; }
+.share_button { display: block; float: left; }
+#share_facebook { padding-right: 12px; margin-top: -1px; }
+#share_twitter { padding-right: 12px; }
+#share_googleplus { padding-top: 1px; }
+#share_email { padding-right: 8px; }
+#big_image { position: relative; width: 960px; height: 506px; margin-bottom: 30px; }
+#big_image_caption { position: absolute; width: 440px; height: 170px; top: 270px; left: 40px; font-size: 21px; color: white; font-weight: normal; line-height: 37px; }
+#big_image_caption #learn_how_today { margin-top: 20px; }
+.feature_table { margin-bottom: 70px; }
+.feature_table td { vertical-align: top; }
+.feature_table .subtitle { font-size: 22px; color: rgb(0, 187, 227); margin-bottom: 10px; }
+.feature_table.right .subtitle { padding-left: 30px; }
+.feature_table .blurb { font-size: 14px; color: rgb(95, 96, 98); line-height: 23px; margin-bottom: 10px; }
+.feature_table.left .blurb { padding-right: 30px; }
+.feature_table.right .blurb { padding-left: 30px; }
+.feature_table.right .button { padding-left: 30px; }
+.feature_table .button .caps, #sidebar .button .caps { font-size: 13px; color: rgb(0, 187, 227); text-transform: uppercase; }
+.feature_table .button .cursive, #sidebar .button .cursive { font-family: Georgia,serif,"Times New Roman"; font-style: italic; color: rgb(38, 35, 36); }
+.feature_table a, .feature_table a:hover, .feature_table a:visited, .feature_table a:link, .feature_table a:hover { text-decoration: none; }
+.feature_table img { margin-top: 45px; }
+.feature_table .image_caption { margin-top: 10px; font-size: 14px; color: black; font-weight: bold; }
+.comparison_big { width: 560px; background: none repeat scroll 0% 0% rgb(255, 255, 255); margin-top: 30px; margin-bottom: 30px; }
+.comparison_big_outline { width: 554px; height: auto; overflow: visible; border: 2px solid rgb(0, 187, 227); }
+.comparison_big_outline_cover { width: 480px; height: 30px; margin: -20px auto 0px; padding-left: 20px; padding-top: 10px; background-color: rgb(255, 255, 255); font-size: 18px; color: rgb(0, 187, 227); font-weight: bold; }
+.comparison_big_inner { width: 523px; margin: 0px auto; padding: 0px 0px 20px; }
+.comparison_big_text { line-height: 30px; }
+.comparison_big_text_indicator { color: black; font-weight: bold; }
+.comparison_big h2 { margin: 0px auto 10px; padding-bottom: 0px; }
+.comparison_big > h2 { margin: 0px auto 10px; }
+.comparison_small { width: 600px; padding: 0px; border-spacing: 0px; border-collapse: collapse; margin-bottom: 30px; font-size: 14px; }
+.comparison_small td.left_column { position: relative; width: 180px; }
+.comparison_small td.right_column { vertical-align: middle; }
+.comparison_small td.right_column h2, .comparison_small td.right_column h3 { margin-bottom: 0px; padding-top: 0px ! important; padding-bottom: 0px ! important; }
+.comparison_small td.right_column h2 { padding-bottom: 5px ! important; }
+.comparison_small_photo { position: relative; width: 300px; height: 214px; background-repeat: no-repeat; }
+.comparison_small_magnifier { width: 36px; height: 35px; background: url("urn:not-loaded:http://www.precisionnutrition.com/wordpress/wp-content/themes/pn2012/images/magnifier_new_big.png") no-repeat scroll center top transparent; position: absolute; bottom: 6px; left: 120px; }
+.comparison_small_text_indicator { font-weight: bold; }
+div.option { margin: 20px 0px; }
+div.option table td.left_side { text-align: center; border-right: 1px solid rgb(0, 0, 0); color: rgb(0, 188, 228); }
+div.option table td.right_side { text-align: left; padding: 0px 0px 5px 15px; }
+div.option table td.right_side h3 { padding-top: 0px ! important; }
+div.option table td.left_side .number { font-family: Arial,Helvetica,sans-serif; font-size: 64px; font-weight: normal; line-height: 55px; }
+.question_answer { width: 600px; padding: 0px; border-collapse: collapse; margin-bottom: 38px ! important; margin-top: 20px; }
+.question_answer td.left_side { font-size: 31px; line-height: 1em; font-weight: normal; color: rgb(0, 187, 227); vertical-align: top; width: 50px; }
+.question_answer td.question.left_side { padding-bottom: 10px; }
+.question_answer td.answer.left_side { padding-top: 5px; }
+.question_answer td.question.right_side { font-weight: bold; vertical-align: top; padding-bottom: 10px; }
+.question_answer td.answer.right_side { vertical-align: top; }
+.question_answer td.answer.right_side p:last-child { padding-bottom: 0px; }
+.quote_bracket_area { clear: both; width: 280px; background: none repeat scroll 0% 0% rgb(255, 255, 255); padding: 0px; margin-left: 20px; margin-bottom: 5px; float: right; }
+.quote_bracket_area_outline { width: 276px; height: auto; overflow: visible; border: 2px solid rgb(0, 187, 227); }
+.quote_bracket_area_outline_cover { width: 200px; height: 40px; margin: -20px auto 0px; background-color: rgb(255, 255, 255); }
+.quote_bracket_area_inner { width: 236px; margin: 0px auto 20px; background-color: rgb(244, 251, 254); }
+.quote_bracket_area_inner_text { padding: 20px; color: rgb(35, 31, 32); font-size: 15px; }
+.main_column_bracket_area { clear: both; width: 600px; height: auto; overflow: visible; background: none repeat scroll 0% 0% rgb(255, 255, 255); padding: 0px; margin-top: 20px; margin-bottom: 20px; }
+.main_column_bracket_area_outline { width: 596px; height: auto; overflow: visible; border: 2px solid rgb(119, 133, 133); }
+.main_column_bracket_area_outline.thick { width: 588px; border: 6px solid rgb(0, 187, 227); }
+.main_column_bracket_area_outline_cover { width: 540px; height: 40px; margin: -20px auto 0px; background-color: rgb(255, 255, 255); }
+.main_column_bracket_area_outline_cover.thick { width: 516px; }
+.main_column_bracket_area_inner { width: 562px; margin: 0px auto 20px; background-color: rgb(244, 251, 254); padding: 20px 0px; }
+.main_column_bracket_area_inner.thick { width: 558px; }
+.main_column_bracket_area_inner.callout { padding: 0px; }
+.main_column_bracket_area_inner.no_background { background-color: rgb(255, 255, 255); }
+.main_column_bracket_area_inner_title { margin: 0px auto 15px; padding: 0px 20px; font-size: 29px; color: rgb(64, 64, 65); text-align: center; line-height: 42px; }
+.main_column_bracket_area_inner_title.callout { margin: 0px auto; }
+.main_column_bracket_area_inner_title.large { font-size: 38px; line-height: 44px; }
+.main_column_bracket_area_inner_text { text-align: left; padding: 0px 40px; color: rgb(35, 31, 32); font-size: 14px; line-height: 20px; }
+.main_column_bracket_area_inner_text p:last-child { padding-bottom: 0px; }
+.before_after_polaroid_set_front { position: relative; width: 558px; height: 391px; background-repeat: no-repeat; }
+.before_after_polaroid_set_side, .before_after_polaroid_set_back { position: relative; width: 250px; height: 122px; margin-top: 15px; margin-bottom: 10px; }
+.before_after_polaroid_set_side { float: left; margin-left: 20px; }
+.before_after_polaroid_set_back { float: right; margin-right: 20px; }
+.before_after_polaroid_set_magnifier_big { width: 55px; height: 53px; background: url("urn:not-loaded:http://www.precisionnutrition.com/wordpress/wp-content/themes/pn2012/images/magnifier_new_huge.png") no-repeat scroll center top transparent; position: absolute; bottom: 30px; left: 250px; }
+.before_after_polaroid_set_magnifier_small { width: 13px; height: 13px; background: url("urn:not-loaded:http://www.precisionnutrition.com/wordpress/wp-content/themes/pn2012/images/magnifier_new_small.png") no-repeat scroll center top transparent; position: absolute; bottom: 3px; right: 3px; }
+.before_after_polaroid_set_caption { margin-top: 10px; font-size: 14px; color: black; font-weight: bold; text-align: center; }
+table.data_table { width: 90%; margin: 0px auto; border-bottom: 1px solid rgb(0, 187, 227); border-spacing: 0px; border-collapse: collapse; }
+table.data_table th, table.data_table td { padding: 10px 25px 10px 0px; }
+table.data_table th { text-align: left; color: rgb(0, 187, 227); text-transform: uppercase; font-size: 14px; font-weight: bold; padding-bottom: 5px; padding-top: 0px; vertical-align: bottom; }
+table.data_table td { vertical-align: top; }
+table.data_table th:last-child, table.data_table tbody tr td:last-child { padding-right: 0px; }
+table.data_table thead tr { border-bottom: 1px solid rgb(0, 187, 227); }
+.program_feature { width: 600px; margin-bottom: 18px; float: left; }
+p + .program_feature { margin-top: 18px; }
+.program_feature + h3 { margin-top: 36px; clear: both; }
+.program_feature img { float: left; width: 87px; margin-top: 8px; }
+.program_feature h4 { float: right; color: rgb(0, 187, 227) ! important; font-weight: bold ! important; padding-top: 0px ! important; padding-bottom: 0px; font-size: 20px ! important; width: 486px; }
+.program_feature p { float: right; font-size: 15px; line-height: 1.6; width: 486px; }
+.program_feature ul { float: right; width: 466px; font-size: 15px; line-height: 1.6; }
+.quote_image_bio_image_holder { margin-top: 20px; }
+.quote_image_bio_image { float: left; }
+.quote_image_bio_bio { width: 420px; float: right; color: rgb(95, 96, 98); font-size: 14px; line-height: 22px; }
+.quote_image_bio_quote p { font-family: Georgia,serif,"Times New Roman"; }
+div#jb_signature { background-image: url("urn:not-loaded:http://www.precisionnutrition.com/images/sig.gif"); background-repeat: no-repeat; background-position: left top; padding-top: 100px; }
+#facebook_like_box_container { width: 600px; overflow: hidden; margin-top: 30px; }
+#facebook_like_box_container iframe { position: relative; top: -2px; left: -1px; }
+#byline { border-top: 2px dashed rgb(0, 187, 227); margin-top: 10px; padding: 20px 0px; margin-bottom: 30px; }
+#byline_image img { width: 120px; float: left; margin-right: 20px; }
+#byline_image { float: left; width: 140px; }
+#byline_text { float: left; font-size: 14px; width: 450px; }
+#byline_text h4 { padding: 0px; margin-top: -7px; }
+#byline_text p { color: rgb(95, 96, 98); line-height: 23px; }
+#byline_text_no_image { width: 600px; }
+#byline_text p.read_more { line-height: 30px; font-size: 17px; color: rgb(0, 0, 0); }

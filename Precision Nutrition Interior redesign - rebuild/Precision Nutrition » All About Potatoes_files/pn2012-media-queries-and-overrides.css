@@ -1,0 +1,13 @@
+/* Effective stylesheet produced by snapshot save */
+@media screen and (max-width: 1000px) {
+  #post_category { margin: 0px 10px 20px; }
+  #main_column { margin-left: 10px; }
+  #sidebar { margin-right: 10px; }
+  #header_logo { left: 10px; }
+  #header_tagline { right: 10px; }
+  #social_search_holder { margin-right: 10px; }
+  #header_menu ul { padding-left: 10px; }
+  #header_contact_phone_and_email { padding-right: 10px; }
+  #footer_content { padding-left: 10px; }
+}
+p.habla_conversation_p_item { font-family: "Helvetica Neue",Arial,Helvetica,Geneva,sans-serif ! important; padding-bottom: 0px ! important; line-height: 15px ! important; }

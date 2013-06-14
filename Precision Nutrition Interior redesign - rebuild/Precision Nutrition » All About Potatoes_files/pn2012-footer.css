@@ -1,0 +1,13 @@
+/* Effective stylesheet produced by snapshot save */
+#footer { width: 100%; background-color: rgb(238, 238, 238); color: rgb(0, 0, 0); font-size: 14px; padding-bottom: 20px; }
+#footer_inner { position: relative; width: 960px; padding: 0px 0px 40px; margin: 0px auto; }
+.footer_column { vertical-align: top; }
+#footer_content { width: 950px; }
+#footer_content ul { margin-left: 0px; margin-top: 20px; }
+#footer_content ul li { list-style-type: none; padding-bottom: 5px; font-family: "news-gothic-std-n4","news-gothic-std",Arial,Helvetica,sans-serif; font-size: 14px; }
+#footer_content strong { font-size: 18px; font-weight: normal; color: rgb(0, 0, 0); font-family: "news-gothic-std-n4","news-gothic-std",Arial,Helvetica,sans-serif; }
+.follow_icon { margin-right: 10px; }
+#fine_print { font-size: 10px; font-family: Arial,Helvetica,sans-serif; }
+#footer_info_text { margin: 20px 0px; line-height: 25px; font-family: "news-gothic-std-n4","news-gothic-std",Arial,Helvetica,sans-serif; }
+#footer_content a, #footer_content a:hover, #footer_content a:visited, #footer_content a:link { color: rgb(0, 113, 138); text-decoration: none; }
+#footer_content a:hover { text-decoration: underline; }

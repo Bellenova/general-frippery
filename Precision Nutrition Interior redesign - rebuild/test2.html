@@ -1,0 +1,54 @@
+<html>
+<head>
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+<script src="http://documentcloud.github.io/underscore/underscore-min.js"></script>
+<script src="http://documentcloud.github.io/backbone/backbone-min.js"></script>
+<script type="text/html" id="myTemplate">
+        <h2>This is my custom form template!</h2>
+        
+		 <form>
+        <h1>New User</h1>
+
+        <h2>Main Info</h2>
+        <div data-fields="title,name,birthday"></div>
+
+        <h2>Account Info</h2>
+        <h3>Email</h3>
+        <div data-fields="email"></div>
+
+        <h3>Password</h3>
+        <p>Must be at least 8 characters long</p>
+        <div data-editors="password"></div>
+    </form>
+    </script>
+<script>
+	$(function(){
+	  var myForm = Backbone.View.extend({
+	   template: function(attrs){
+		 return _.template($('#myTemplate').html(),attrs);
+	   },
+		render: function(){
+		  $('body').append(this.template({fieldsets: 'fieldsets'}));
+		}
+	  });
+	  var schema = {
+        radio:      { type: 'Radio', options: ['Man', 'Woman', 'Fitness Professional'] },
+        name:       { type: 'Text', validators: ['required'] },
+		email:      { dataType: 'email', validators: ['required', 'email'] },
+        select:     { type: 'Select', options: ['18 - 25', '26 - 35', '36 - 50','55+'] },
+      };
+      var model = new Backbone.Model({
+        number: null,
+        checkbox: true,
+        textList: ['item1', 'item2', 'item3']
+      });
+	  
+	  new myForm().render();      
+	});
+	</script>
+</head>
+<body>
+</body>
+</html>

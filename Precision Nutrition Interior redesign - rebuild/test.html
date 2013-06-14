@@ -1,0 +1,102 @@
+<html>
+<head>
+<script type="text/javascript" src="js/libs/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="js/libs/handlebars.js"></script>
+<script type="text/javascript" src="js/libs/underscore.js"></script>
+<script type="text/javascript" src="js/libs/backbone-min.js"></script>
+<script type="text/javascript" src="js/libs/backbone-forms.min.js"></script>
+<script type="text/javascript" src="js/libs/backbone-bootstrap.js"></script>
+<script src="js/bootstrap.js"></script>
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/custom.css" rel="stylesheet">
+</head>
+<body>
+<div id="error-message"></div>
+<div id="uiTest">
+<div id="formContainer"></div>
+<!-- <button class="validate">Validate</button>-->
+<div class="buttons">
+  <input type="button" class="btn btn-primary" value="Next" id="next-button">
+  <input type="button" class="btn btn-primary" value="Previous" id="prev-button">
+  <input type="button" class="btn btn-primary" value="Submit" id="submit-button">
+</div>
+<script>
+
+
+    $(function() {
+      var schema = {
+        radio:      { type: 'Radio', title: 'Are you a...', options: ['Man', 'Woman', 'Fitness Professional'] },
+        name:       { type: 'Text', title: 'Name', validators: ['required'] },
+		email:      { dataType: 'email', title: 'Email', validators: ['required', 'email'] },
+        select:     { type: 'Select', title: 'Age Range', options: ['18 - 25', '26 - 35', '36 - 50','55+'] },
+    
+      };
+      
+      var model = new Backbone.Model({
+        number: null,
+        checkbox: true,
+        textList: ['item1', 'item2', 'item3']
+      });
+	
+      var form = new Backbone.Form({
+		model: model,
+        schema: schema,
+        fieldsets: [['radio'],['name', 'email','select']]
+      });
+      
+      window.form = form;
+//hide()
+     $('#uiTest').hide(function() {
+		 	$('#uiTest #formContainer').html(form.render().el);
+			$('#uiTest #formContainer input:radio:eq(0)').attr('checked',true);
+			$('#uiTest #formContainer fieldset').eq(0).show(function() {
+				$('#uiTest').fadeIn('fast');
+			});
+	 	});
+	$('#uiTest #next-button').click(function() {
+		$(this).hide();
+		$('#uiTest #formContainer fieldset:eq(0)').fadeOut('fast', function() {
+			$('#uiTest #submit-button').show();
+			$('#uiTest #formContainer fieldset:eq(1)').fadeIn('fast');
+		});
+	});
+      $('#uiTest label').click(function() {
+        var name = $(this).attr('for'),
+            $editor = $('#' + name),
+            key = $editor.attr('name');
+
+        console.log(form.getValue(key))
+      });
+  $('#uiTest #submit-button').click(function() {
+	    form.validate();
+	if ( form.validate()){
+			return false;
+	}
+		var type = $("input[name='c1_radio']").val();  
+		var name = $("input[name='name']").val();  
+		var email = $("input[name='email']").val();  
+		var age = $("input[name='age']").val();  
+		
+		var dataString = 'type=' + type +  '&name='+ name + '&email=' + email + '&age=' + age;
+		
+		$.ajax({
+      type: "POST",
+      url: "http://respondto.it/pn_frontend_test",
+      data: dataString,
+      success: function() {
+		$('#error-message').html('<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>Your request has been submitted successfully!</div>');
+      },
+	  error: function(XMLHttpRequest, textStatus, errorThrown) { 
+		$('#error-message').html('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button>There was a problem with your submission. Status: ' + textStatus + 'Error: ' + errorThrown +'</div>');
+    }
+     });
+	 
+    return false;
+	});
+    });
+	// render topnav and bottom stories in backbone
+	//$
+  </script>
+</body>
+</html>

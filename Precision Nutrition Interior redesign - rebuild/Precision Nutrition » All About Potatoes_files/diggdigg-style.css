@@ -1,0 +1,42 @@
+/* Effective stylesheet produced by snapshot save */
+.FBConnectButton_Small, .FBConnectButton_RTL_Small { border-left: 1px solid rgb(26, 53, 110); width: 54px; background: none repeat scroll -5px -232px transparent ! important; }
+.FBConnectButton_Small .FBConnectButton_Text { margin-left: 12px ! important; }
+.dd-digg-ajax-load, .dd-reddit-ajax-load, .dd-dzone-ajax-load, .dd-ybuzz-ajax-load, .dd-twitter-ajax-load, .dd-fbshare-ajax-load, .dd-fblike-ajax-load, .dd-delicious-ajax-load, .dd-sphinn-ajax-load, .dd-gbuzz-ajax-load, .dd-fbshareme-ajax-load, .dd-tweetmeme-ajax-load, .dd-linkedin-ajax-load, .dd-google1-ajax-load { width: 50px; height: 22px; background: url("urn:not-loaded:http://www.precisionnutrition.com/wordpress/wp-content/plugins/digg-digg/image/ajax-loader.gif") no-repeat scroll center center transparent; }
+.dd_delicious { display: block; color: rgb(0, 0, 0); font: 16px arial; text-decoration: none; width: 50px; height: 60px; text-align: center; }
+.dd_delicious a:link, .dd_delicious a:visited, .dd_delicious a:active, .dd_delicious a:hover { text-decoration: none; color: rgb(0, 0, 0); }
+.dd_delicious_normal_image { height: 60px; margin-top: 3px; padding: 0px; text-align: center; width: 50px; display: block; background: url("urn:not-loaded:http://www.precisionnutrition.com/wordpress/wp-content/plugins/digg-digg/image/delicious.png") no-repeat scroll 0% 0% transparent; }
+.dd_delicious_compact_image { height: 22px; padding: 0px; text-align: center; width: 50px; display: block; background: url("urn:not-loaded:http://www.precisionnutrition.com/wordpress/wp-content/plugins/digg-digg/image/delicious-compact.png") no-repeat scroll 0% 0% transparent; }
+.dd_delicious_compact_image span { font-size: 10px; }
+.dd_comments { height: 16px; margin-top: 3px; padding: 0px; text-align: center; width: 50px; display: block; background: url("urn:not-loaded:http://www.precisionnutrition.com/wordpress/wp-content/plugins/digg-digg/image/comments-link.png") no-repeat scroll 0% 0% transparent; }
+.dd_button a:link, .dd_button a:visited, .dd_button a:active { text-decoration: none; color: rgb(0, 0, 0); }
+#dd_ajax_float { text-align: center; border: 1px solid rgb(187, 187, 187); min-width: 55px; width: auto; border-radius: 5px 5px 5px 5px; box-shadow: 1px 0px 15px rgba(0, 0, 0, 0.2); padding: 5px; position: absolute; display: none; left: -120px; font: 10px/16px Arial; background: none repeat scroll 0% 0% padding-box rgb(255, 255, 255); }
+#dd_ajax_float .dd_button_v { width: auto; height: auto; line-height: 0; padding: 4px 1px; }
+#dd_ajax_float iframe { margin: 0px; }
+#dd_start, #dd_end { float: left; clear: both; }
+.dd_outer { width: 100%; height: 0px; position: absolute; top: 0px; left: 0px; z-index: 9999; }
+.dd_inner { margin: 0px auto; position: relative; }
+.dd_post_share { padding: 0px; margin-bottom: 6px; display: block; }
+.dd_post_share_left { float: left; }
+.dd_post_share_right { float: right; }
+.dd_buttons img { border: 0px none rgb(0, 0, 0); }
+#dd_name { color: rgb(169, 169, 169); font-size: 8px; text-align: center; margin: 8px 0px 6px; padding: 0px; line-height: 0; }
+#dd_name a:link, #dd_name a:visited, #dd_name a:active { text-decoration: none; color: rgb(169, 169, 169); border: 0px none; }
+#dd_name a:hover { text-decoration: underline; color: rgb(169, 169, 169); border: 0px none; }
+.dd_button { float: left; padding: 4px; }
+.dd_fblike_xfbml_ajax_left_float { padding-left: 3px; }
+.dd_google1_ajax_left_float { margin-left: -1px; }
+.dd_linkedin_ajax_left_float { margin-left: -2px; margin-bottom: -5px; }
+html { overflow-y: scroll; }
+.dd_button_spacer { padding-top: 8px; }
+#dd_comments { clear: both ! important; width: 50px; height: 60px; font-family: arial; }
+#dd_comments a:link, #dd_comments a:visited, #dd_comments a:active, #dd_comments a:hover { text-decoration: none; }
+#dd_comments .clcount { color: rgb(68, 68, 68); display: block; font-size: 20px; height: 34px; padding: 4px 0px; position: relative; text-align: center; width: 50px; line-height: 24px; background: url("urn:not-loaded:http://www.precisionnutrition.com/wordpress/wp-content/plugins/digg-digg/image/comments-count.png") no-repeat scroll left top transparent; }
+#dd_comments .ccount { color: rgb(68, 68, 68); font-size: 17px; text-align: center; text-decoration: none; }
+#dd_comments .clink { height: 16px; margin-top: 3px; padding: 0px; text-align: center; width: 50px; display: block; background: url("urn:not-loaded:http://www.precisionnutrition.com/wordpress/wp-content/plugins/digg-digg/image/comments-link.png") no-repeat scroll 0% 0% transparent; }
+.dd_button_extra_v { padding: 1px 4px; }
+.st_email_custom { padding: 2px 4px 3px; border: 1px solid rgb(221, 221, 221); cursor: pointer; margin-bottom: 2px; background: url("urn:not-loaded:http://www.precisionnutrition.com/wordpress/wp-content/plugins/digg-digg/image/email.png") no-repeat scroll 3px 4px transparent; }
+#dd_print_button { padding: 1px 4px 3px; border: 1px solid rgb(221, 221, 221); cursor: pointer; margin-bottom: 2px; background: url("urn:not-loaded:http://www.precisionnutrition.com/wordpress/wp-content/plugins/digg-digg/image/print.png") no-repeat scroll 3px 2px transparent; }
+#dd_email_text { padding: 0px 0px 0px 18px; font-size: 10px; }
+#dd_print_text { padding: 0px 0px 0px 14px; font-size: 10px; }
+#dd_print_text a:link, #dd_print_text a:visited, #dd_print_text a:active { color: rgb(0, 0, 0); text-decoration: none; }
+#dd_print_text a:hover { color: rgb(0, 0, 255); text-decoration: underline; }

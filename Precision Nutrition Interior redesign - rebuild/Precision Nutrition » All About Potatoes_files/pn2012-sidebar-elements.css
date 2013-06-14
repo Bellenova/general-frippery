@@ -1,0 +1,62 @@
+/* Effective stylesheet produced by snapshot save */
+#sidebar_container_dashed { width: 236px; border: 2px dashed rgb(0, 187, 227); padding: 20px; color: rgb(95, 96, 98); margin-bottom: 40px; }
+#sidebar_container_dashed p { margin-bottom: 20px; font-size: 16px; line-height: 22px; }
+#sidebar_container_dashed img { display: block; margin: 0px auto 30px; }
+#sidebar .button { text-align: center; }
+#sidebar a, #sidebar a:hover, #sidebar a:visited, #sidebar a:link, #sidebar a:hover { text-decoration: underline; }
+#sidebar a:hover { color: rgb(0, 187, 227); }
+#publications { clear: both; padding: 0px 0px 20px; }
+#publications h4 { padding-bottom: 5px; }
+#publications p { color: rgb(35, 31, 32); font-size: 14px; line-height: 20px; margin-bottom: 10px; padding-bottom: 0px; }
+#publications_image { display: block; margin: 0px auto; }
+#teams { clear: both; padding: 0px 0px 20px; }
+#teams h4 { padding-bottom: 5px; }
+#teams p { color: rgb(35, 31, 32); font-size: 14px; line-height: 20px; margin-bottom: 10px; padding-bottom: 0px; }
+#teams_image { display: block; margin: 0px auto; }
+#ceus { clear: both; padding: 0px 0px 20px; }
+#ceus h4 { padding-bottom: 5px; }
+#ceus p { color: rgb(35, 31, 32); font-size: 14px; line-height: 20px; margin-bottom: 10px; padding-bottom: 0px; }
+#ceus img { display: block; margin: 0px auto; }
+#transformations { clear: both; }
+#transformations h4 { padding-bottom: 5px; }
+#transformations p { color: rgb(35, 31, 32); font-size: 14px; line-height: 20px; margin-bottom: 10px; padding-bottom: 0px; }
+#transformations div.top_spacer { height: 30px; }
+.transformation_name { font-family: Arial,Helvetica,sans-serif; font-size: 23px; font-weight: bold; text-align: center; }
+.transformation_lost { font-family: Arial,Helvetica,sans-serif; font-size: 17px; font-weight: bold; text-align: center; color: rgb(0, 187, 227); margin-bottom: 5px; }
+.transformation_photo_big { position: relative; width: 280px; height: 214px; background-repeat: no-repeat; }
+.transformation_photo_small_left, .transformation_photo_small_right { position: relative; width: 135px; height: 66px; margin-top: 10px; }
+.transformation_photo_small_left { float: left; }
+.transformation_photo_small_right { float: right; }
+#transformations .magnifier_big { width: 36px; height: 35px; background: url("urn:not-loaded:http://www.precisionnutrition.com/images/magnifier_new_big.png") no-repeat scroll center top transparent; position: absolute; bottom: 6px; left: 120px; }
+#transformations .magnifier_small { width: 13px; height: 13px; background: url("urn:not-loaded:http://www.precisionnutrition.com/images/magnifier_new_small.png") no-repeat scroll center top transparent; position: absolute; bottom: 3px; right: 3px; }
+#transformations div.dashed_top, #transformations div.dashed_bottom { border-top: 1px dashed rgb(0, 187, 227); width: 160px; }
+#transformations div.dashed_bottom { margin: 30px auto 0px; }
+.sidebar_bracket_area { clear: both; width: 280px; background: none repeat scroll 0% 0% rgb(255, 255, 255); padding: 0px; margin-top: 20px; }
+.sidebar_bracket_area_outline { width: 276px; height: auto; overflow: visible; border: 2px solid rgb(119, 133, 133); }
+.sidebar_bracket_area_outline_cover { width: 200px; height: 40px; margin: -20px auto 0px; background-color: rgb(255, 255, 255); }
+.sidebar_bracket_area_inner { width: 236px; margin: 0px auto 20px; background-color: rgb(244, 251, 254); padding: 0px 0px 10px; }
+.sidebar_bracket_area_inner_no_background { width: 236px; margin: 0px auto; background-color: rgb(255, 255, 255); padding: 0px 0px 10px; }
+.sidebar_bracket_area_inner .sidebar_bracket_area_inner_title { font-size: 21px; padding: 20px; color: rgb(0, 187, 227); margin: 0px auto; }
+.sidebar_bracket_area_inner .sidebar_bracket_area_inner_text { padding: 0px 20px; color: rgb(35, 31, 32); font-size: 14px; line-height: 20px; margin: 0px auto 20px; }
+.sidebar_bracket_area_inner_no_background .sidebar_bracket_area_inner_title { font-size: 21px; padding: 20px 0px; color: rgb(0, 187, 227); margin: 0px auto; }
+.sidebar_bracket_area_inner_no_background .sidebar_bracket_area_inner_text { color: rgb(35, 31, 32); font-size: 14px; line-height: 20px; margin: 0px auto; }
+#container.two_column .sb-course-resource { text-align: center; }
+#container.two_column div.sb-course-resource a { font-size: 20px; }
+#container.two_column div.sb-course-resource h3 { margin: 0px; padding-top: 0px; padding-bottom: 10px; font: bold 17px/20px arial,sans-serif; text-transform: uppercase; text-align: center; color: rgb(88, 89, 91); }
+#container.two_column div.sb-course-resource h3 strong { display: block; font-size: 31px; line-height: 40px; color: rgb(0, 187, 227); font-weight: normal; text-transform: none; }
+#most_popular_articles { width: 278px; margin-bottom: 18px; border-left: 1px solid rgb(0, 187, 227); }
+#most_popular_articles > ul { padding: 0px; margin: 0px; }
+#most_popular_articles > ul > li { padding: 10px 5px; float: left; list-style: none outside none; width: 81px; text-align: center; font-size: 12px; line-height: 16px; border-right: 1px solid rgb(0, 187, 227); border-bottom: 1px solid rgb(0, 187, 227); border-top: 1px solid rgb(0, 187, 227); cursor: pointer; background: none repeat scroll 0% 0% rgb(244, 251, 254); }
+#most_popular_articles > ul > li.selected { background: none repeat scroll 0% 0% rgb(255, 255, 255); color: rgb(0, 0, 0); cursor: auto; border-bottom: medium none; }
+#most_popular_articles > ul > li.last { width: 83px; }
+#most_popular_articles > ul > li.empty { width: 58px; cursor: auto; border-width: medium medium 1px; border-style: none none solid; border-color: -moz-use-text-color -moz-use-text-color rgb(0, 187, 227); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; background: none repeat scroll 0% 0% white; height: 33px; }
+#most_popular_articles_inner_border { border-right: 1px solid rgb(0, 187, 227); border-width: medium 1px 1px medium; border-style: none solid solid none; border-color: -moz-use-text-color rgb(0, 187, 227) rgb(0, 187, 227) -moz-use-text-color; -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; }
+#most_popular_articles_section_holder { padding-top: 20px; font-size: 14px; margin-bottom: 10px; }
+#most_popular_articles_section > ul { margin: 0px; padding: 10px; }
+.most_popular_articles_item { list-style: none outside none; line-height: 20px; }
+.widget_recent_entries { font-size: 14px; }
+.widget_recent_entries > ul > li { margin: 0px 0px 0px 15px; line-height: 20px; }
+#article_topics, #recent_posts { font-size: 14px; }
+#article_topics > li, #recent_posts > li { margin: 0px 0px 0px 15px; line-height: 20px; }
+#article_topics { margin: 0px; list-style: none outside none; }
+#article_topics > li { margin-left: 0px; }
